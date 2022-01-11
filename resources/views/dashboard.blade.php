@@ -1,4 +1,4 @@
-<x-app-layout>
+{{-- <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -12,4 +12,24 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app-layout> --}}
+
+@extends('adminlte::page', ['iFrameEnabled' => true])
+
+ @section ( ' título ' , ' Panel ' )
+
+ @section ( ' content_header ' )
+     < h1 >Tablero</ h1 >
+ @stop
+
+@section ( ' contenido ' )
+     < p >Bienvenido a este hermoso panel de administración.</ p >
+ @stop
+
+@section ( ' css ' )
+     < enlace  rel = " hoja de estilo "  href = " /css/admin_custom.css " >
+ @stop
+
+@section ( ' js ' )
+     < script >  consola . log ( ' ¡Hola! ' ); </ script >
+ @stop
