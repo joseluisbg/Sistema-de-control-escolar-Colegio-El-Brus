@@ -1,5 +1,7 @@
 <?php
-
+use App\Http\Controllers\Admin\Director\DirectorController;
+use App\Http\Controllers\Admin\SchoolControl\SchoolControlController;
+use App\Http\Controllers\Admin\Teacher\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Ruta raiz del proyecto
 Route::get('/', function () {
     return view('auth/login');
 })->middleware('guest');
 
-Route::middleware(['auth:sanctum', 'verified', 'auth'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+//Desactivado la ruta de registro usuarios por defecto en config/fortify.php
 
-Route::get('panel/escritorio', function() {
-    return view('administrador/escritorio');
+//Ruta para el panel principal todos los usuarios autenticados
+Route::middleware(['auth:sanctum', 'verified', 'auth'])->get('escritorio', function () {
+    return view('dashboard');
+})->name('escritorio');
+
+//Ruta para la vista del escritorio general
+Route::get('sistema/usuario/escritorio', function() {
+    return view('system/desk');
 });
+
+//Crud para los directores
+Route::resource('sistema/control/director', DirectorController::class)->names('admin.director')->middleware('auth');
+
+//Crud para control escolar
+Route::resource('sistema/control/control-escolar', SchoolControlController::class)->names('admin.school.control')->middleware('auth');
+
+//Crud para los docentes
+Route::resource('sistema/control/docente', TeacherController::class)->names('admin.teacher')->middleware('auth');

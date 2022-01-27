@@ -1,0 +1,87 @@
+/* Control del nav-top */
+.main-header.navbar.navbar-expand.navbar-white.navbar-light {
+    background-color: #171d41 !important;
+}
+/* Control del texto en nav-top (nombre del usuario) */
+.nav-link.dropdown-toggle span {
+    font-weight: bold !important;
+
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+
+    color: white !important;
+}
+/* Cambiar el color del icono menu */
+.fas.fa-bars {
+    color: white !important;
+}
+/* Cambiar el color del icono pantalla completa */
+.fas.fa-expand-arrows-alt,
+.fas.fa-compress-arrows-alt {
+    color: white;
+}
+.nav-link.bg-danger.dropdown-toggle {
+    background-color: #a3130e !important;
+}
+/* Control del cuadro para cerrar sesion */
+.user-header.h-auto {
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+
+    color: white !important;
+    background-color: #a3130e !important;
+}
+/* Control del boton en hover de logout */
+.btn.btn-default.btn-flat.float-right.btn-block:hover {
+    color: white !important;
+    border-radius: 5px !important;
+    background-color: #171d41 !important;
+}
+/* Control del color del sidebar */
+.os-viewport.os-viewport-native-scrollbars-invisible {
+    color: white !important;
+    background-color: #171d41 !important;
+}
+/* Control del color en texto sidebar titulos de seccion */
+[class*="sidebar-light-"] .nav-header {
+    font-weight: bold;
+
+    letter-spacing: .5px !important;
+
+    color: #fff !important;
+    background-color: inherit !important;
+}
+.sidebar-light-primary a {
+    letter-spacing: .5px !important;
+
+    color: white !important;
+}
+.sidebar-light-primary .elevation-4:hover {
+    background-color: white !important;
+}
+/* Control de color en hover del los items en sidebar */
+[class*="sidebar-light-"] .nav-sidebar > .nav-item.menu-open > .nav-link,
+[class*="sidebar-light-"] .nav-sidebar > .nav-item:hover > .nav-link {
+    color: #000 !important;
+    background-color: #f0f0f0 !important;
+    /*box-shadow: #FFFFFF  -1px 1px 1px 1px;*/
+}
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+    z-index: 1;
+
+    color: #fff;
+    background-color: #3295c6;
+}
+/* Control para el color del active al precionar en opociones de cerrar */
+.dropdown-item.active,
+.dropdown-item:active {
+    text-decoration: none;
+
+    color: #fff;
+    background-color: #3295c6;
+}
+/*Desactivar la barra de navs*/
+.nav.navbar.navbar-expand.navbar-white.navbar-light.border-bottom.p-0 {
+    display: none;
+}

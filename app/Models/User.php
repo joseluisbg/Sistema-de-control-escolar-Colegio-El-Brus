@@ -61,8 +61,17 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    //Obtener el rol del usuario, mostrando debajo del nombre.
     public function adminlte_desc(){
-        return "Administrador";
+        if ($role = auth()->user()->can('Administrador')) {
+            return $role = "Administrador";
+        }elseif ($role = auth()->user()->can('Controlescolar')){
+            return $role = "Control Escolar";
+        }elseif ($role = auth()->user()->can('Docente')){
+            return $role = "Docente";
+        }elseif ($role = auth()->user()->can('Alumno')){
+            return $role = "Alumno";
+        }
     }
 
     public function adminlte_profile_url(){

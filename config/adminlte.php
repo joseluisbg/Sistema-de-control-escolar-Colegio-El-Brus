@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => 'COLEGIO <b>ELRBUS</b>',
+    'logo' => 'COLEGIO <b>ELBRUS</b>',
     'logo_img' => 'vendor/adminlte/dist/img/logo-elbrus.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -66,7 +66,7 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => true,
-    'usermenu_header_class' => 'bg-primary text-uppercase',
+    'usermenu_header_class' => '',
     'usermenu_image' => false,
     'usermenu_desc' => true,
     'usermenu_profile_url' => false,
@@ -86,7 +86,7 @@ return [
     'layout_topnav' => null,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => true,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -121,12 +121,12 @@ return [
     |
     */
 
-    'classes_body' => '',
+    'classes_body' => 'bg-light',
     'classes_brand' => '',
-    'classes_brand_text' => '',
-    'classes_content_wrapper' => '',
-    'classes_content_header' => '',
-    'classes_content' => '',
+    'classes_brand_text' => 'text-dark',
+    'classes_content_wrapper' => 'bg-light',
+    'classes_content_header' => 'bg-light',
+    'classes_content' => 'bg-light',
     'classes_sidebar' => 'sidebar-light-primary elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
@@ -231,18 +231,89 @@ return [
             'text'         => 'search',
             'topnav_right' => false,
         ],
+
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => false,
         ],
 
         //Sidebar items:
+        ['header' => 'PANEL PRINCIPAL'],
         [
             'text'        => 'Escritorio',
-            'url'         => 'panel/escritorio',
+            'url'         => 'sistema/usuario/escritorio',
             'icon'        => 'fas fa-fw fa-home',
-            'label_color' => 'success',
         ],
+
+        ['header' => 'GESTIÓN DE USUARIOS'],
+        [
+            'text'    => 'Control de usuarios',
+            'icon'    => 'fas fa-fw fa-cogs',
+            'submenu' => [
+                [
+                    'text' => 'Directores',
+                    'route'  => 'admin.director.index',
+                    'icon' => 'fas fa-fw fa-user-tie',
+                ],
+                [
+                    'text' => 'Administadores',
+                    'route'  => 'admin.school.control.index',
+                    'icon' => 'fas fa-fw fa-user-shield',
+                ],
+                [
+                    'text' => 'Docentes',
+                    'route'  => 'admin.teacher.index',
+                    'icon'  => 'fas fa-fw fa-chalkboard-teacher',
+                ],
+                [
+                    'text' => 'Alumnos',
+                    'url'  => '#',
+                    'icon'  => 'fas fa-fw fa-user-friends',
+                ],
+            ],
+        ],
+        // [
+        //     'text'        => 'Administración',
+        //     'url'         => 'panel/usuario/administracion',
+        //     'icon'        => 'fas fa-fw fa-user-tie',
+        //     'label_color' => 'success',
+        // ],
+
+        // [
+        //     'text'        => 'Control Escolar',
+        //     'url'         => 'panel/usuario/control-escolar',
+        //     'icon'        => 'fas fa-fw fa-user-shield',
+        //     'label_color' => 'success',
+        // ],
+
+        // [
+        //     'text'        => 'Docentes',
+        //     'url'         => 'panel/usuario/docente',
+        //     'icon'        => 'fas fa-fw fa-chalkboard-teacher',
+        //     'label_color' => 'success',
+        // ],
+
+        // [
+        //     'text'        => 'Alumnos',
+        //     'url'         => 'panel/usuario/alumno',
+        //     'icon'        => 'fas fa-fw fa-user-friends',
+        //     'label_color' => 'success',
+        // ],
+
+        //  ['header' => 'CONFIGURACIÓN'],
+        // [
+        //     'text'        => 'Materias',
+        //     'url'         => 'panel/usuario/admn',
+        //     'icon'        => 'fas fa-fw fa-book-reader',
+        //     'label_color' => 'success',
+        // ],
+
+        // [
+        //     'text'        => 'Grupos',
+        //     'url'         => 'panel/usuario/admn',
+        //     'icon'        => 'fas fa-fw fa-bookmark',
+        //     'label_color' => 'success',
+        // ],
 
         // Sidebar items:
         /*
@@ -368,21 +439,21 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
             ],
@@ -403,21 +474,21 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
                 ],
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
                 ],
             ],
@@ -484,5 +555,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];
