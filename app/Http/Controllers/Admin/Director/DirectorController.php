@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Traits\HasRoles;
+use App\Imports\DirectoresImport;
 
 class DirectorController extends Controller
 {
@@ -124,5 +125,11 @@ class DirectorController extends Controller
         $usuario = User::findOrFail($id);
         $usuario->delete();
         return redirect()->route('admin.director.index');
+    }
+    public function importExcel(Request $request )
+    {
+        $file = $request->file('file');
+        Excel::import(new DirectoresImport, $file);
+        return back()->with('message','Importación de usuarios completa');
     }
 }

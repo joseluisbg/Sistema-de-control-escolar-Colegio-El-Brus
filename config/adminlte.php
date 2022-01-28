@@ -265,11 +265,11 @@ return [
                     'route'  => 'admin.teacher.index',
                     'icon'  => 'fas fa-fw fa-chalkboard-teacher',
                 ],
-                [
-                    'text' => 'Alumnos',
-                    'url'  => '#',
-                    'icon'  => 'fas fa-fw fa-user-friends',
-                ],
+                //[
+                  //  'text' => 'Alumnos',
+                    //'url'  => '#',
+                    //'icon'  => 'fas fa-fw fa-user-friends',
+                //],
             ],
         ],
         // [

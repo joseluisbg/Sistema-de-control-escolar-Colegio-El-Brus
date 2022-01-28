@@ -12,7 +12,7 @@
       <div class="card mt-4">
         <div class="card-body">
           <h3>Datos del director: <strong>{{ $student->name}}&nbsp;{{ $student->last_name }}</strong></h3>
-          <form method="post" action="{{ route('admin.teacher.update',$student->id) }}">
+          <form method="post" action="{{ route('admin.director.update',$student->id) }}">
           @method('put')
           @csrf
           <div class="row">

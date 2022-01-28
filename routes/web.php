@@ -34,9 +34,15 @@ Route::get('sistema/usuario/escritorio', function() {
 
 //Crud para los directores
 Route::resource('sistema/control/director', DirectorController::class)->names('admin.director')->middleware('auth');
+//Carga masiva
+Route::post('import-list-excel',[DirectorController::class,'importExcel'])->name('users.import.excel')->middleware('auth');
 
 //Crud para control escolar
 Route::resource('sistema/control/control-escolar', SchoolControlController::class)->names('admin.school.control')->middleware('auth');
+//Carga masiva
+Route::post('import-ce-excel',[SchoolControlController::class,'importceExcel'])->name('ce.import.excel')->middleware('auth');
 
 //Crud para los docentes
 Route::resource('sistema/control/docente', TeacherController::class)->names('admin.teacher')->middleware('auth');
+//Carga masiva
+Route::post('import-teacher-excel',[TeacherController::class,'importTeacherExcel'])->name('teacher.import.excel')->middleware('auth');

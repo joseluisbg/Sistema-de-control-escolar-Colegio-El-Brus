@@ -10,7 +10,8 @@
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>Nombre</th>
+                        <th>Nombre(s)</th>
+                        <th>Apellido(s)</th>
                         <th>Email</th>
                         <th>Estatus</th>
                     </tr>
@@ -20,13 +21,28 @@
                     <tr>
                         <td>{{ $teacher->id }}</td>
                         <td>{{ $teacher->name }}</td>
+                        <td>{{ $teacher->last_name }}</td>
                         <td>{{ $teacher->email }}</td>
-                        <td><form method="post">
-                            <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="{{ $teacher->id }}" checked>
-                          <label class="custom-control-label" for="{{ $teacher->id }}"><div id="msg"></div></label>
-                        </div>
-                        </form></td>
+                        <td>
+                            <form method="post">
+                                @if($teacher->status == "Activo")
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="{{ $teacher->id }}" checked>
+                                    <label class="custom-control-label" for="{{ $teacher->id }}">
+                                        <div id="msg"></div>
+                                    </label>
+                                </div>
+                                @endif
+                                @if($teacher->status == "Suspendido")
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="{{ $teacher->id }}" >
+                                    <label class="custom-control-label" for="{{ $teacher->id }}">
+                                        <div id="msg"></div>
+                                    </label>
+                                </div>
+                                @endif
+                            </form>
+                        </td>
                         <td width="10px">
                             <a href="{{ route('admin.director.edit',$teacher) }}" class="btn btn-primary">
                                 <span class="fas fa-eye"></span>
@@ -34,8 +50,8 @@
                         </td>
                         <td>
                             <form method="post" action="{{ route('admin.director.destroy',$teacher->id) }}">
-                            @csrf
-                            @method('delete')
+                                @csrf
+                                @method('delete')
                                 <button type="submit" class="btn btn-danger">
                                     <span class="fas fa-trash-alt"></span>
                                 </button>
@@ -51,9 +67,9 @@
         </div>
         @else
         <div class="card-body p-3">
-            <strong style="text-transform: uppercase; color: red;">No existen coinsidencias.</strong>
+            <strong style="text-transform: uppercase; color: red;">No existen coincidencias.</strong>
         </div>
         @endif
     </div>
-</script>
+    </script>
 </div>

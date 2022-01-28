@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Traits\HasRoles;
+use App\Imports\ConEscImport;
 
 class SchoolControlController extends Controller
 {
@@ -124,5 +125,11 @@ class SchoolControlController extends Controller
         $usuario = User::findOrFail($id);
         $usuario->delete();
         return redirect()->route('admin.school.control.index');
+    }
+    public function importceExcel(Request $request )
+    {
+        $file = $request->file('file');
+        Excel::import(new ConEscImport, $file);
+        return back()->with('message','Importación de usuarios completa');
     }
 }
