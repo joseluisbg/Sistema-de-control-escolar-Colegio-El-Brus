@@ -241,7 +241,7 @@ return [
         ['header' => 'PANEL PRINCIPAL'],
         [
             'text'        => 'Escritorio',
-            'url'         => 'sistema/usuario/escritorio',
+            'url'         => 'escritorio',
             'icon'        => 'fas fa-fw fa-home',
         ],
 
@@ -265,11 +265,11 @@ return [
                     'route'  => 'admin.teacher.index',
                     'icon'  => 'fas fa-fw fa-chalkboard-teacher',
                 ],
-                //[
-                  //  'text' => 'Alumnos',
-                    //'url'  => '#',
-                    //'icon'  => 'fas fa-fw fa-user-friends',
-                //],
+                [
+                    'text' => 'Alumnos',
+                    'url'  => 'sistema/control/alumnos',
+                    'icon'  => 'fas fa-fw fa-user-friends',
+                ],
             ],
         ],
         // [
@@ -525,7 +525,7 @@ return [
 
     'iframe' => [
         'default_tab' => [
-            'url' => null,
+            'route' => null,
             'title' => null,
         ],
         'buttons' => [

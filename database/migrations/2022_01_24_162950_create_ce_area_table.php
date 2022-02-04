@@ -17,8 +17,8 @@ class CreateCeAreaTable extends Migration
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->increments('id_area')->length(11);
-            $table->string('name');
-            $table->string('status');
+            $table->text('name');
+            $table->text('status');
             $table->integer('user_modification')->length(11);
             $table->timestamps();
         });

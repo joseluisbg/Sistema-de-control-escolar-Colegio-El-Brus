@@ -19,7 +19,7 @@ class CreateCeLevelGroupsTable extends Migration
             $table->increments('id_lg')->length(11);
             $table->integer('id_level')->length(11)->nullable()->unsigned();
             $table->integer('id_group')->length(11)->nullable()->unsigned();
-            $table->string('status');
+            $table->text('status');
             $table->integer('user_modification')->length(11);
             $table->timestamps();
             $table->foreign('id_group')->references('id_group')->on('ce_group');

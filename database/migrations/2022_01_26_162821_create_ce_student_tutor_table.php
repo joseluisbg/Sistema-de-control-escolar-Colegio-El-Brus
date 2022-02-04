@@ -18,8 +18,8 @@ class CreateCeStudentTutorTable extends Migration
             $table->integer('id_student')->length(11)->nullable()->unsigned();
             $table->integer('id_user')->length(11)->nullable()->unsigned();
             $table->integer('tutor');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_student')->references('id_student')->on('ce_student');
+            //$table->foreign('id_user')->references('id')->on('users');
+            //$table->foreign('id_student')->references('id_student')->on('ce_student');
             $table->timestamps();
         });
     }

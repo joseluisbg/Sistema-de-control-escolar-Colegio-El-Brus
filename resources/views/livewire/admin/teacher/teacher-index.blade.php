@@ -6,56 +6,45 @@
         </div>
         @if($teachers->count())
         <div class="card-body">
-            <table class="table table-striped">
+            <table class="table table-striped text-center">
                 <thead>
-                    <tr>
-                        <th>id</th>
+                    <tr class="text-uppercase">
                         <th>Nombre(s)</th>
                         <th>Apellido(s)</th>
                         <th>Email</th>
                         <th>Estatus</th>
+                        <th>Ver</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($teachers as $teacher)
                     <tr>
-                        <td>{{ $teacher->id }}</td>
                         <td>{{ $teacher->name }}</td>
                         <td>{{ $teacher->last_name }}</td>
                         <td>{{ $teacher->email }}</td>
                         <td>
-                            <form method="post">
-                                @if($teacher->status == "Activo")
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="{{ $teacher->id }}" checked>
-                                    <label class="custom-control-label" for="{{ $teacher->id }}">
-                                        <div id="msg"></div>
-                                    </label>
-                                </div>
-                                @endif
-                                @if($teacher->status == "Suspendido")
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="{{ $teacher->id }}">
-                                    <label class="custom-control-label" for="{{ $teacher->id }}">
-                                        <div id="msg"></div>
-                                    </label>
-                                </div>
-                                @endif
+                            @if($teacher->status === "Activo")
+                            <form method="post" action="{{ route('admin.teacher.status.suspendido',$teacher->id) }}" class="form-suspendido">
+                                @csrf
+                                @method('put')
+                                <button type="submit" class="btn text-success">
+                                    <span>Activo</span>
+                                </button>
                             </form>
+                            @elseif($teacher->status === "Suspendido")
+                            <form method="post" action="{{ route('admin.teacher.status.activo',$teacher->id) }}">
+                                @csrf
+                                @method('put')
+                                <button type="submit" class="btn text-danger">
+                                    <span>Suspendido</span>
+                                </button>
+                            </form>
+                            @endif
                         </td>
                         <td width="10px">
                             <a href="{{ route('admin.teacher.edit',$teacher) }}" class="btn btn-primary">
                                 <span class="fas fa-eye"></span>
                             </a>
-                        </td>
-                        <td>
-                            <form method="post" action="{{ route('admin.teacher.destroy',$teacher->id) }}">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-danger">
-                                    <span class="fas fa-trash-alt"></span>
-                                </button>
-                            </form>
                         </td>
                     </tr>
                     @endforeach

@@ -17,10 +17,10 @@ class CreateCeLevelTable extends Migration
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->increments('id_level')->length(11);
-            $table->string('name');
-            $table->string('nickname');
+            $table->text('name');
+            $table->text('nickname');
             $table->integer('id_area')->length(11)->nullable()->unsigned();
-            $table->string('status');
+            $table->text('status');
             $table->integer('user_modification')->length(11);
             $table->timestamps();
             $table->foreign('id_area')->references('id_area')->on('ce_area');

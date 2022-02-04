@@ -11,7 +11,7 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="small-box bg-success shadow">
               <div class="inner">
-                <h3>156</h3>
+                <h3>{{ $alumnos }}</h3>
                 <p>Alumnos registrados</p>
               </div>
               <div class="icon">
@@ -22,7 +22,7 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="small-box bg-info shadow">
               <div class="inner">
-                <h3>6</h3>
+                <h3>{{ $docentes }}</h3>
                 <p>Docentes</p>
               </div>
               <div class="icon">

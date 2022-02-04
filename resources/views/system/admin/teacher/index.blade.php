@@ -45,7 +45,7 @@
                     @if(Session::has('message'))
                     <p>{{Session::get('message')}}</p>
                     @endif
-                    <input class="form-group" type="file" name="file">
+                    <input class="form-group" type="file" name="file" required>
                     <button type="submit" class="btn btn-outline-primary btn-block text-uppercase">Importar</button>
                 </form>
             </div>
@@ -72,5 +72,29 @@
 @stop
 
 @section('js')
-
+  @if(session('Registrar') == 'ok') {
+    <script>
+    Swal.fire('¡Docente registrado!', '', 'success')
+    </script>
+  }
+  @endif
+  @if(session('Actualizar') == 'ok') {
+    <script>
+    Swal.fire('¡Docente actualizado!', '', 'success')
+    </script>
+  }
+  @endif
+  @if(session('Suspendido') == 'ok') {
+    <script>
+    Swal.fire('¡Docente suspendido!', '', 'success')
+    </script>
+  }
+  @endif
+  @if(session('Activo') == 'ok') {
+    <script>
+    Swal.fire('¡Docente activo!', '', 'success')
+    </script>
+  }
+  @endif
+</script>
 @stop

@@ -23,8 +23,8 @@ class CreateCeGradesTable extends Migration
             $table->integer('id_cycle')->length(11)->nullable()->unsigned();
             $table->integer('id_ie')->length(11)->nullable()->unsigned();
             $table->integer('id_period')->length(11)->nullable()->unsigned();
-            $table->string('value');
-            $table->string('status');
+            $table->text('value');
+            $table->text('status');
             $table->integer('user_modification')->length(11);
             $table->timestamps();
             $table->foreign('id_student')->references('id_student')->on('ce_student');

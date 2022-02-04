@@ -12,44 +12,44 @@
       <div class="card">
         <div class="card-body">
           <h3 class="text-uppercase font-weight-bold mb-4">Crear un nuevo docente</h3>
-          <form method="post" action="{{ route('admin.teacher.store') }}">
+          <form method="post" action="{{ route('admin.teacher.store') }}" class="form-registrar" autocomplete="off">
             @csrf
             <div class="row">
               <div class="col">
                 <label>Nombre:</label>
-                <input name="name" type="text" class="form-control" placeholder="Ingresar el nombre(s)">
+                <input name="name" type="text" class="form-control" placeholder="Ingresar el nombre(s)" maxlength="50">
               </div>
               <div class="col">
                 <label>Apellidos:</label>
-                <input name="last_name" type="text" class="form-control" placeholder="Ingresar los apellidos">
+                <input name="last_name" type="text" class="form-control" placeholder="Ingresar los apellidos" maxlength="50">
               </div>
               <div class="col">
                 <label>CURP:</label>
-                <input name="curp" type="text" class="form-control" placeholder="Ingresar el CURP">
+                <input name="curp" type="text" class="form-control text-uppercase" placeholder="Ingresar el CURP" maxlength="18" minlength="18">
               </div>
             </div>
             <div class="row pt-3">
               <div class="col">
                 <label>RFC:</label>
-                <input name="rfc" type="text" class="form-control" placeholder="Ingresar el RFC">
+                <input name="rfc" type="text" class="form-control text-uppercase" placeholder="Ingresar el RFC" maxlength="15">
               </div>
               <div class="col">
                 <label>Teléfono:</label>
-                <input name="tel_1" type="text" class="form-control" placeholder="Ingresar los teléfono">
+                <input name="tel_1" type="text" class="form-control" placeholder="Ingresar los teléfono" maxlength="20">
               </div>
               <div class="col">
                 <label>Celular:</label>
-                <input name="tel_2" type="text" class="form-control" placeholder="Ingresar el celular">
+                <input name="tel_2" type="text" class="form-control" placeholder="Ingresar el celular" maxlength="20">
               </div>
             </div>
             <div class="row pt-3">
               <div class="col-4">
                 <label>Correo electrónico:</label>
-                <input name="email" type="text" class="form-control" placeholder="Ingresar el correo electrónico">
+                <input name="email" type="email" class="form-control" placeholder="Ingresar el correo electrónico" maxlength="50">
               </div>
               <div class="col-4">
                 <label>Contraseña:</label>
-                <input name="password" type="text" class="form-control" placeholder="Ingresar la contraseña">
+                <input name="password" type="password" class="form-control" placeholder="Ingresar la contraseña" maxlength="50">
               </div>
             </div>
             <button type="submit" class="btn btn-primary mt-3 text-uppercase">Registrar</button>
@@ -68,5 +68,21 @@
 @stop
 
 @section('js')
-
+<script type="text/javascript">
+  $('.form-registrar').submit(function(e){
+    e.preventDefault();
+    Swal.fire({
+    title: '¿Desea realizar el registro?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Registrar',
+    denyButtonText: `Cancelar`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.value) {
+      this.submit();
+    }
+  })
+  });
+</script>
 @stop

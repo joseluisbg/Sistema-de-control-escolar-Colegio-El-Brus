@@ -17,8 +17,8 @@ class CreateCeItemEvaluationTable extends Migration
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->increments('id_ie')->length(11);
-            $table->string('name');
-            $table->string('valor');
+            $table->text('name');
+            $table->text('valor');
         });
     }
 

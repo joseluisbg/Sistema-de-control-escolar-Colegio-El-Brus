@@ -56,22 +56,5 @@ class UserSeeder extends Seeder
         'email'     => 'alumno@gmail.com',
         'password'  => bcrypt('123456')
     ])->assignRole('Alumno');
-
-        Ce_student::create([
-        'matricula' => Str::random(1),
-        'date_ofbirth' => Str::random(1),
-    ]);Ce_student::create([
-        'matricula' => Str::random(1),
-        'date_ofbirth' => Str::random(1),
-    ]);Ce_student::create([
-        'matricula' => Str::random(1),
-        'date_ofbirth' => Str::random(1),
-    ]);Ce_student::create([
-        'matricula' => Str::random(1),
-        'date_ofbirth' => Str::random(1),
-    ]);Ce_student::create([
-        'matricula' => Str::random(1),
-        'date_ofbirth' => Str::random(1),
-    ]);
     }
 }

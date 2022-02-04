@@ -67,9 +67,9 @@ class User extends Authenticatable
 
     //Obtener el rol del usuario, mostrando debajo del nombre.
     public function adminlte_desc(){
-        if ($role = auth()->user()->can('Administrador')) {
+        if ($role = auth()->user()->can('Super-administrador')) {
             return $role = "Administrador";
-        }elseif ($role = auth()->user()->can('Controlescolar')){
+        }elseif ($role = auth()->user()->can('Adiministador')){
             return $role = "Control Escolar";
         }elseif ($role = auth()->user()->can('Docente')){
             return $role = "Docente";

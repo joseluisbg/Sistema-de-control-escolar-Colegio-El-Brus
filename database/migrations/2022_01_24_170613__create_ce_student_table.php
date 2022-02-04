@@ -17,11 +17,18 @@ class CreateCeStudentTable extends Migration
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->increments('id_student')->length(11);
-            $table->integer('id_user')->length(11)->nullable()->unsigned();
-            $table->string('matricula');
-            $table->string('date_ofbirth');
+            $table->text('matricula');
+            $table->text('name');
+            $table->text('curp');
+            $table->text('street')->nullable();
+            $table->text('suburb')->nullable();
+            $table->text('city')->nullable();
+            $table->text('state')->nullable();
+            $table->text('cp')->nullable();
+            $table->text('date_ofbirth')->nullable();
+            $table->text('status');
+            $table->text('user_modification');
             $table->timestamps();
-            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

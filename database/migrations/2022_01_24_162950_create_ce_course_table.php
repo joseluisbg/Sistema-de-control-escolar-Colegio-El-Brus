@@ -17,10 +17,10 @@ class CreateCeCourseTable extends Migration
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->increments('id_course')->length(11);
-            $table->string('name');
+            $table->text('name');
             $table->integer('rep_sep')->length(11);
-            $table->string('nick_sep');
-            $table->string('status');
+            $table->text('nick_sep');
+            $table->text('status');
             $table->date('date_creation');
             $table->integer('user_modification')->length(11);
             $table->timestamps();

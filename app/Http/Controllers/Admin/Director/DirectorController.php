@@ -59,7 +59,7 @@ class DirectorController extends Controller
             $teacher->status = 'Activo';
             $teacher->assignRole('Super-administrador');
             $teacher->save();
-            return redirect()->route('admin.director.index');
+            return redirect()->route('admin.director.index')->with('Registrar', 'ok');
         }
     }
 
@@ -107,10 +107,9 @@ class DirectorController extends Controller
             $teacher->email = $request->input('email');
             $teacher->password = Hash::make($request['password']);
             $teacher->user_modification = $user;
-            $teacher->status = 'Activo';
             $teacher->assignRole('Super-administrador');
             $teacher->save();
-            return redirect()->route('admin.director.index');
+            return redirect()->route('admin.director.index')->with('Actualizar', 'ok');
         }
     }
 
@@ -126,10 +125,27 @@ class DirectorController extends Controller
         $usuario->delete();
         return redirect()->route('admin.director.index');
     }
+
     public function importExcel(Request $request )
     {
         $file = $request->file('file');
         Excel::import(new DirectoresImport, $file);
         return back()->with('message','Importación de usuarios completa');
+    }
+
+    public function statusA(Request $request, $id)
+    {
+        $student = User::where('id', $id)->firstOrFail();
+            $student->status = "Suspendido";
+            $student->update();
+            return redirect()->route('admin.director.index')->with('Suspendido', 'ok');
+    }
+
+    public function statusS(Request $request, $id)
+    {
+        $student = User::where('id', $id)->firstOrFail();
+            $student->status = "Activo";
+            $student->update();
+            return redirect()->route('admin.director.index')->with('Activo', 'ok');
     }
 }

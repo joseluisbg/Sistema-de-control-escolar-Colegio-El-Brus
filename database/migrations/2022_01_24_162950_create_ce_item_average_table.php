@@ -17,9 +17,9 @@ class CreateCeItemAverageTable extends Migration
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->increments('id_ia')->length(11);
-            $table->string('name');
-            $table->string('valor');
-            $table->string('status');
+            $table->text('name');
+            $table->text('valor');
+            $table->text('status');
             $table->integer('user_modification')->length(11);
             $table->timestamps();
         });
