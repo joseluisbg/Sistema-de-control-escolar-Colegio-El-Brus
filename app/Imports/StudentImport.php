@@ -17,7 +17,7 @@ class StudentImport implements ToModel
         $user = auth()->user()->id;
         //$input = $row[6];
         //$date = strtotime($input);
-        $fecha=($row[6]-2569)*86400;
+        $fecha=($row[6]- 25568)*86400;
         $fecha=date('d/m/Y', $fecha);
         $estudiante = new Ce_student([
             'matricula' => $row[0],

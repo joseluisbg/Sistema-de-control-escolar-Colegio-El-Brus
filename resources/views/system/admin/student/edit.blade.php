@@ -52,9 +52,21 @@
                 <label>Código Postal:</label>
                 <input name="cp" type="text" class="form-control" value="{{ $student[0]->cp }}" maxlength="5">
               </div>
+              <?php 
+              $buscar = '/';
+              $coinc = strpos($student[0]->date_ofbirth, $buscar);
+              if ($coinc > 0) {
+              $fch=explode("/",$student[0]->date_ofbirth);
+              $tfecha=$fch[2]."-".$fch[1]."-".$fch[0];
+              }
+              else{
+                $fch=explode("-",$student[0]->date_ofbirth);
+              $tfecha=$fch[0]."-".$fch[1]."-".$fch[2];
+              }
+              ?>
               <div class="col">
                 <label>Fecha de nacimiento:</label>
-                <input name="date_ofbirth" type="date" class="form-control" value="{{ $student[0]->date_ofbirth }}" required>
+                <input name="date_ofbirth" type="date" class="form-control" value="{{$tfecha}}" required>
               </div>
             </div>
             <div class="row mt-4">

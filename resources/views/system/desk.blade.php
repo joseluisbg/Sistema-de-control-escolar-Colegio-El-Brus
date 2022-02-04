@@ -33,7 +33,7 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="small-box bg-danger shadow">
               <div class="inner">
-                <h3>15</h3>
+                <h3>0</h3>
                 <p>Grupos</p>
               </div>
               <div class="icon">
@@ -44,7 +44,7 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="small-box bg-warning shadow">
               <div class="inner">
-                <h3>2</h3>
+                <h3>0</h3>
                 <p>Materias</p>
               </div>
               <div class="icon">
