@@ -24,7 +24,7 @@
                         <td>{{ $student->curp }}</td>
                         <td>
                             @if($student->status === "Activo")
-                            <form method="post" action="{{ route('student.status.suspendido',$student->id_student) }}" class="form-suspendido">
+                            <form method="post" action="{{ route('student.status.suspendido',$student->id_student) }}" class="form-suspender">
                                 @csrf
                                 @method('put')
                                 <button type="submit" class="btn text-success">
@@ -32,7 +32,7 @@
                                 </button>
                             </form>
                             @elseif($student->status === "Suspendido")
-                            <form method="post" action="{{ route('student.status.activo',$student->id_student) }}">
+                            <form method="post" action="{{ route('student.status.activo',$student->id_student) }}" class="form-activar">
                                 @csrf
                                 @method('put')
                                 <button type="submit" class="btn text-danger">

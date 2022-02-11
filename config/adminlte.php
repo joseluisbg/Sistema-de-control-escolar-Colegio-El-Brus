@@ -242,9 +242,14 @@ return [
         [
             'text'        => 'Escritorio',
             'url'         => 'escritorio',
-            'icon'        => 'fas fa-fw fa-home',
+            'icon'        => 'fas fa-fw fa-chalkboard',
         ],
-
+        ['header' => 'CALIFICACIÓNES'],
+        [
+            'text'        => 'Asignar calificación',
+            'url'         => 'sistema/asignacion/calificaiones',
+            'icon'        => 'fas fa-fw fa-edit',
+        ],
         ['header' => 'GESTIÓN DE USUARIOS'],
         [
             'text'    => 'Control de usuarios',
@@ -272,13 +277,54 @@ return [
                 ],
             ],
         ],
+        ['header' => 'GESTIÓN ESCOLAR'],
+        [
+            'text'    => 'Control escolar',
+            'icon'    => 'fas fa-fw fa-graduation-cap',
+            'submenu' => [
+                [
+                    'text' => 'Ciclo',
+                    'route'  => 'admin.cycle.index',
+                    'icon' => 'fas fa-fw fa-clock',
+                ],
+                [
+                    'text' => 'Grados',
+                    'route'  => 'admin.level.index',
+                    'icon' => 'fas fa-fw fa-layer-group',
+                ],
+                [
+                    'text' => 'Materias',
+                    'route'  => 'admin.course.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
+            ],
+        ],
+        ['header' => 'ASIGNACIÓNES'],
+        [
+            'text'    => 'Asignación escolar',
+            'icon'    => 'fas fa-fw fa-graduation-cap',
+            'submenu' => [
+                [
+                    'text' => 'Docente a materia',
+                    'route'  => 'admin.assignment.course.teacher.index',
+                    'icon' => 'fas fa-fw fa-clock',
+                ],
+            ],
+        ],
         // [
         //     'text'        => 'Administración',
         //     'url'         => 'panel/usuario/administracion',
         //     'icon'        => 'fas fa-fw fa-user-tie',
         //     'label_color' => 'success',
+        //     'can'     => 'Docente',
         // ],
-
+/*
+        [
+                    'text' => 'Grupos',
+                    'route'  => 'admin.group.index',
+                    'icon' => 'fas fa-fw fa-folder-open',
+                ],
+*/
         // [
         //     'text'        => 'Control Escolar',
         //     'url'         => 'panel/usuario/control-escolar',

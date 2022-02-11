@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Ce_student;
+use App\Models\Ce_level;
+use App\Models\Ce_area;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -56,5 +58,23 @@ class UserSeeder extends Seeder
         'email'     => 'alumno@gmail.com',
         'password'  => bcrypt('123456')
     ])->assignRole('Alumno');
+
+        Ce_area::create([
+        'name'  => 'Preescolar',
+        'status' => 'Activo',
+        'user_modification' => '1',
+    ]);
+
+        Ce_area::create([
+        'name'  => 'Primaria',
+        'status' => 'Activo',
+        'user_modification' => '1',
+    ]);
+
+        Ce_area::create([
+        'name'  => 'Secundaria',
+        'status' => 'Activo',
+        'user_modification' => '1',
+    ]);
     }
 }

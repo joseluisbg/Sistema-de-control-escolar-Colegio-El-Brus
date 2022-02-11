@@ -21,7 +21,6 @@ class CreateCeCourseTable extends Migration
             $table->integer('rep_sep')->length(11);
             $table->text('nick_sep');
             $table->text('status');
-            $table->date('date_creation');
             $table->integer('user_modification')->length(11);
             $table->timestamps();
         });

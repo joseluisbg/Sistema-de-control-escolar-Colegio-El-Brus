@@ -15,7 +15,7 @@
                 <p>Alumnos registrados</p>
               </div>
               <div class="icon">
-                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-user-friends"></i>
               </div>
             </div>
         </div>
@@ -26,29 +26,29 @@
                 <p>Docentes</p>
               </div>
               <div class="icon">
-                <i class="fas fa-hand-paper"></i>
+                <i class="fas fa-chalkboard-teacher"></i>
               </div>
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="small-box bg-danger shadow">
               <div class="inner">
-                <h3>0</h3>
+                <h3>{{ $grupos }}</h3>
                 <p>Grupos</p>
               </div>
               <div class="icon">
-                <i class="fas fa-user-times"></i>
+                <i class="fas fa-folder-open"></i>
               </div>
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="small-box bg-warning shadow">
               <div class="inner">
-                <h3>0</h3>
+                <h3>{{ $materias }}</h3>
                 <p>Materias</p>
               </div>
               <div class="icon">
-                <i class="fas fa-notes-medical"></i>
+                <i class="fas fa-book"></i>
               </div>
             </div>
         </div>

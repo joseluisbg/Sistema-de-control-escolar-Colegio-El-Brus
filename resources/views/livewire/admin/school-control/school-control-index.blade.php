@@ -24,7 +24,7 @@
                         <td>{{ $teacher->email }}</td>
                         <td>
                             @if($teacher->status === "Activo")
-                            <form method="post" action="{{ route('admin.school.status.suspendido',$teacher->id) }}" class="form-suspendido">
+                            <form method="post" action="{{ route('admin.school.status.suspendido',$teacher->id) }}" class="form-suspender">
                                 @csrf
                                 @method('put')
                                 <button type="submit" class="btn text-success">
@@ -32,7 +32,7 @@
                                 </button>
                             </form>
                             @elseif($teacher->status === "Suspendido")
-                            <form method="post" action="{{ route('admin.school.status.activo',$teacher->id) }}">
+                            <form method="post" action="{{ route('admin.school.status.activo',$teacher->id) }}" class="form-activar">
                                 @csrf
                                 @method('put')
                                 <button type="submit" class="btn text-danger">

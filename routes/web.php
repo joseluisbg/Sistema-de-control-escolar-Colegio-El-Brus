@@ -1,5 +1,10 @@
 <?php
+use App\Http\Controllers\Admin\Assignment\CourseTeacherController;
+use App\Http\Controllers\Admin\Course\CourseController;
+use App\Http\Controllers\Admin\Cycle\CycleController;
 use App\Http\Controllers\Admin\Director\DirectorController;
+use App\Http\Controllers\Admin\Group\GroupController;
+use App\Http\Controllers\Admin\Level\LevelController;
 use App\Http\Controllers\Admin\SchoolControl\SchoolControlController;
 use App\Http\Controllers\Admin\Student\StudentController;
 use App\Http\Controllers\Admin\Teacher\TeacherController;
@@ -62,3 +67,43 @@ Route::put('sistema/control/alumnos/status/suspendido/{id_student}',[StudentCont
 Route::put('sistema/control/alumnos/status/activo/{id_student}',[StudentController::class,'statusS'])->name('student.status.activo')->middleware('auth');
 //Carga masiva
 Route::post('student-teacher-excel',[StudentController::class,'importStudentExcel'])->name('student.import.excel')->middleware('auth');
+
+//Crud para los grupos
+Route::resource('sistema/control/grupo', GroupController::class)->names('admin.group')->middleware('auth');
+//Activar al grupo
+Route::put('sistema/control/grupo/status/suspendido/{id_group}',[GroupController::class,'statusA'])->name('group.status.suspendido')->middleware('auth');
+//Suspender al grupo
+Route::put('sistema/control/grupo/status/activo/{id_group}',[GroupController::class,'statusS'])->name('group.status.activo')->middleware('auth');
+
+//Crud para los ciclos escolares
+Route::resource('sistema/control/ciclo', CycleController::class)->names('admin.cycle')->middleware('auth');
+//Activar los ciclos escolares
+Route::put('sistema/control/ciclo/status/suspendido/{id_cycle}',[CycleController::class,'statusA'])->name('cycle.status.suspendido')->middleware('auth');
+//Suspender los ciclos escolares
+Route::put('sistema/control/ciclo/status/activo/{id_cycle}',[CycleController::class,'statusS'])->name('cycle.status.activo')->middleware('auth');
+
+//Crud para las materias
+Route::resource('sistema/control/materia', CourseController::class)->names('admin.course')->middleware('auth');
+//Activar las materias
+Route::put('sistema/control/materia/status/suspendido/{id_course}',[CourseController::class,'statusA'])->name('course.status.suspendido')->middleware('auth');
+//Suspender las materias
+Route::put('sistema/control/materia/status/activo/{id_course}',[CourseController::class,'statusS'])->name('course.status.activo')->middleware('auth');
+
+//Crud para los grados
+Route::resource('sistema/control/grado', LevelController::class)->names('admin.level')->middleware('auth');
+//Activar los grados
+Route::put('sistema/control/grado/status/suspendido/{id_level}',[LevelController::class,'statusA'])->name('level.status.suspendido')->middleware('auth');
+//Suspender los grados
+Route::put('sistema/control/grado/status/activo/{id_level}',[LevelController::class,'statusS'])->name('level.status.activo')->middleware('auth');
+
+//Crud Asignación de profesor a materia
+Route::resource('sistema/control/asignacion/docente/materia', CourseTeacherController::class)->names('admin.assignment.course.teacher')->middleware('auth');
+
+//Ruta de ejemplo para carga de calificaciones
+Route::get('sistema/asignacion/calificaiones', function() {
+    return view('calificaciones1');
+});
+
+Route::get('sistema/asignacion/calificaiones/grupo', function() {
+    return view('calificaciones2');
+});

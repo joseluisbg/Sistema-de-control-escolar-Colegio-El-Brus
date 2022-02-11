@@ -44,12 +44,12 @@
 }
 /* Control del color en texto sidebar titulos de seccion */
 [class*="sidebar-light-"] .nav-header {
-    font-weight: bold;
+    font-weight: bold !important;
 
     letter-spacing: .5px !important;
 
     color: #fff !important;
-    background-color: inherit !important;
+    background-color: inherit !important;;
 }
 .sidebar-light-primary a {
     letter-spacing: .5px !important;
@@ -61,17 +61,18 @@
 }
 /* Control de color en hover del los items en sidebar */
 [class*="sidebar-light-"] .nav-sidebar > .nav-item.menu-open > .nav-link,
-[class*="sidebar-light-"] .nav-sidebar > .nav-item:hover > .nav-link {
+[class*="sidebar-light-"] .nav-sidebar > .nav-item:hover > .nav-link,
+[class*="sidebar-light-"] .nav-treeview > .nav-item > .nav-link:hover {
     color: #000 !important;
     background-color: #f0f0f0 !important;
-    /*box-shadow: #FFFFFF  -1px 1px 1px 1px;*/
 }
 .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
-.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
-    z-index: 1;
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active,
+[class*="sidebar-light-"] .nav-treeview > .nav-item > .nav-link.active {
+    z-index: 1 !important;
 
-    color: #fff;
-    background-color: #3295c6;
+    color: #fff !important;
+    background-color: #3295c6 !important;
 }
 /* Control para el color del active al precionar en opociones de cerrar */
 .dropdown-item.active,

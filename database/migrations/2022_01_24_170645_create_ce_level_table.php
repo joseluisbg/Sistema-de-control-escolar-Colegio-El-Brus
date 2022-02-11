@@ -21,6 +21,7 @@ class CreateCeLevelTable extends Migration
             $table->text('nickname');
             $table->integer('id_area')->length(11)->nullable()->unsigned();
             $table->text('status');
+            $table->text('cycle');
             $table->integer('user_modification')->length(11);
             $table->timestamps();
             $table->foreign('id_area')->references('id_area')->on('ce_area');

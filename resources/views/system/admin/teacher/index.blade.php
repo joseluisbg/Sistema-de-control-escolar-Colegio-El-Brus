@@ -72,6 +72,40 @@
 @stop
 
 @section('js')
+<script type="text/javascript">
+  $('.form-suspender').submit(function(e){
+    e.preventDefault();
+    Swal.fire({
+    title: '¿Desea suspender al docente?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Aceptar',
+    denyButtonText: `Cancelar`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.value) {
+      this.submit();
+    }
+  })
+  });
+</script>
+<script type="text/javascript">
+  $('.form-activar').submit(function(e){
+    e.preventDefault();
+    Swal.fire({
+    title: '¿Desea activar al docente?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Aceptar',
+    denyButtonText: `Cancelar`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.value) {
+      this.submit();
+    }
+  })
+  });
+</script>
   @if(session('Registrar') == 'ok') {
     <script>
     Swal.fire('¡Docente registrado!', '', 'success')
