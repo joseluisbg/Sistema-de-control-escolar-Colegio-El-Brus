@@ -244,12 +244,14 @@ return [
             'url'         => 'escritorio',
             'icon'        => 'fas fa-fw fa-chalkboard',
         ],
+        /*
         ['header' => 'CALIFICACIÓNES'],
         [
             'text'        => 'Asignar calificación',
             'url'         => 'sistema/asignacion/calificaiones',
             'icon'        => 'fas fa-fw fa-edit',
         ],
+        */
         ['header' => 'GESTIÓN DE USUARIOS'],
         [
             'text'    => 'Control de usuarios',

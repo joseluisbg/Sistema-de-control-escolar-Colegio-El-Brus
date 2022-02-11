@@ -23,6 +23,7 @@ class CourseTeacherIndex extends Component
     {
         $courses = Ce_course::where('name', 'LIKE', '%' .$this->search. '%')->orWhere('rep_sep', 'LIKE', '%' .$this->search. '%')->paginate();
         $teachers = User::role('Docente')->where('status', 'Activo')->get();
-        return view('livewire.admin.assignment.course-teacher-index', compact(['courses', 'teachers']));
+        $coTeacher= Ce_course_teacher::where('status', 'Activo')->get();
+        return view('livewire.admin.assignment.course-teacher-index', compact(['courses', 'teachers','coTeacher']));
     }
 }

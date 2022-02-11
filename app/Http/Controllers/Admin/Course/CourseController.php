@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Course;
 use App\Http\Controllers\Controller;
 use App\Models\Ce_course;
 use Illuminate\Http\Request;
+use App\Models\Ce_cycle;
 
 class CourseController extends Controller
 {
@@ -17,7 +18,8 @@ class CourseController extends Controller
     {
         $activos = Ce_course::where('status', 'Activo')->count();
         $suspendidos = Ce_course::where('status', 'Suspendido')->count();
-        return view('system/admin/course/index', compact(['activos', 'suspendidos']));
+        $cycles = Ce_cycle::where('status', 'Activo')->get();
+        return view('system/admin/course/index', compact(['activos', 'suspendidos', 'cycles']));
     }
 
     /**
@@ -44,6 +46,7 @@ class CourseController extends Controller
             $course->name = $request->input('name');
             $course->rep_sep = $request->input('rep_sep');
             $course->nick_sep = $request->input('nick_sep');
+            $course->cycle = $request->input('cycle');
             $course->user_modification = $user;
             $course->status = 'Activo';
             $course->save();
@@ -89,6 +92,7 @@ class CourseController extends Controller
             $course->name = $request->input('name');
             $course->rep_sep = $request->input('rep_sep');
             $course->nick_sep = $request->input('nick_sep');
+            $course->cycle = $request->input('cycle');
             $course->user_modification = $user;
             $course->save();
             return redirect()->route('admin.course.index')->with('Actualizar', 'ok');

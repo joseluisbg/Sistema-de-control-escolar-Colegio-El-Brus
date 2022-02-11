@@ -19,8 +19,9 @@ class CreateCeCourseTable extends Migration
             $table->increments('id_course')->length(11);
             $table->text('name');
             $table->integer('rep_sep')->length(11);
-            $table->text('nick_sep');
+            $table->text('nick_sep')->nullable();
             $table->text('status');
+            $table->text('cycle');
             $table->integer('user_modification')->length(11);
             $table->timestamps();
         });

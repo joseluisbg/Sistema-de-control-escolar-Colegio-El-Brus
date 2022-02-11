@@ -10,7 +10,7 @@
                 <thead>
                     <tr class="text-uppercase">
                         <th>Nombre</th>
-                        <th>Registro SEP</th>
+                        <th>Materia SEP</th>
                         <th>Nombre SEP</th>
                         <th>Fecha de creación</th>
                         <th>Fecha de actualización</th>
@@ -22,7 +22,11 @@
                     @foreach($courses as $course)
                     <tr>
                         <td>{{ $course->name }}</td>
-                        <td>{{ $course->rep_sep }}</td>
+                        @if($course->rep_sep==1)
+                        <td>Si</td>
+                        @else
+                        <td>No</td>
+                        @endif
                         <td>{{ $course->nick_sep }}</td>
                         <td>{{ $course->created_at->format('d/m/Y') }}</td>
                         <td>{{ $course->updated_at->format('d/m/Y') }}</td>

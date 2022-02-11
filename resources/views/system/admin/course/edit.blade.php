@@ -21,12 +21,21 @@
                 <input name="name" type="text" class="form-control" value="{{ $course->name }}" maxlength="50">
               </div>
               <div class="col">
-                <label>Registro SEP:</label>
-                <input name="rep_sep" type="text" class="form-control" value="{{ $course->rep_sep }}" maxlength="50">
+              <label>¿Reporta calificación a la SEP?</label>
+                <select class="form-control" name="rep_sep" required>
+                  <option selected disabled value="{{ $course->rep_sep }}">Seleccionar</option>
+                  <option value="1">Si</option>
+                  <option value="2">No</option>
+                </select>
               </div>
               <div class="col">
                 <label>Nombre SEP:</label>
                 <input name="nick_sep" type="text" class="form-control" value="{{ $course->nick_sep }}" maxlength="50">
+              </div>
+              
+              <div class="col">
+                <label>Ciclo escolar:</label>
+                <input name="cycle" type="text" class="form-control" value="{{ $course->cycle }}" maxlength="20" required>
               </div>
               <div class="col">
                 <label>Fecha de creación:</label>
