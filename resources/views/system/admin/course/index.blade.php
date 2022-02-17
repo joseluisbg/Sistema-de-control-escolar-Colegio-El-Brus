@@ -49,10 +49,18 @@
             @csrf
             <div class="row">
               <div class="col-12 mb-2">
-                <label>Nombre de la materia:</label>
+                <label>Nombre de la materia: (boleta)</label>
                 <input name="name" type="text" class="form-control" placeholder="Ingresar nombre de la materia" maxlength="20" required>
               </div>
-              <div class="col">
+              <div class="col-12 mb-2">
+                <label>Nombre de la materia:</label>
+                <input name="nickname" type="text" class="form-control" placeholder="Ingresar nombre de la materia" maxlength="20" required>
+              </div>
+              <div class="col-6">
+                <label>Nombre sep:</label>
+                <input name="nick_sep" type="text" class="form-control" placeholder="Ingresar nombre sep" maxlength="20">
+              </div>
+              <div class="col-6">
                 <label>¿Reporta calificación a la SEP?</label>
                 <select class="form-control" name="rep_sep" required>
                   <option selected disabled value="">Seleccionar</option>
@@ -60,21 +68,24 @@
                   <option value="0">No</option>
                 </select>
               </div>
+            <div class="col-6">
+              <label>Ciclo escolar:</label>
+              <select class="form-control" name="cycle" required>
+                <option selected disabled value="">Seleccionar</option>
+                @foreach($cycles as $cycle)
+                <option value="{{ $cycle->name }}">{{ $cycle->name }}</option>
+                @endforeach
+              </select>
             </div>
-            <div class="row">
-              <div class="col">
-                <label>Nombre sep:</label>
-                <input name="nick_sep" type="text" class="form-control" placeholder="Ingresar nombre sep" maxlength="20">
-              </div>
-              <div class="col">
-                <label>Ciclo escolar:</label>
-                <select class="form-control" name="cycle" required>
-                  <option selected disabled value="">Seleccionar</option>
-                  @foreach($cycles as $cycle)
-                  <option value="{{ $cycle->name }}">{{ $cycle->name }}</option>
-                  @endforeach
-                </select>
-              </div>
+            <div class="col-6">
+              <label>Nivel escolar:</label>
+              <select class="form-control" name="id_area" required>
+                <option selected disabled value="">Seleccionar</option>
+                @foreach($areas as $area)
+                <option value="{{ $area->id_area }}">{{ $area->name }}</option>
+                @endforeach
+              </select>
+            </div>
             </div>
             <button type="submit" class="btn btn-outline-primary btn-block mt-3 text-uppercase">Registrar</button>
             <button type="reset" class="btn btn-outline-danger btn-block mt-3 text-uppercase">Borrar todo</button>

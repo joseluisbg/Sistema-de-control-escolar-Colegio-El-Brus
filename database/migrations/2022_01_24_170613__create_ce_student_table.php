@@ -28,6 +28,8 @@ class CreateCeStudentTable extends Migration
             $table->text('date_ofbirth')->nullable();
             $table->text('status');
             $table->text('user_modification');
+            $table->integer('id_area')->length(11)->nullable()->unsigned();
+            $table->foreign('id_area')->references('id_area')->on('ce_area');
             $table->timestamps();
         });
     }

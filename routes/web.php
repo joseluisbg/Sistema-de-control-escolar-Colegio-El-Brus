@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Admin\Assignment\CourseTeacherController;
+use App\Http\Controllers\Admin\Assignment\LevelCoursesController;
 use App\Http\Controllers\Admin\Course\CourseController;
 use App\Http\Controllers\Admin\Cycle\CycleController;
 use App\Http\Controllers\Admin\Director\DirectorController;
@@ -99,11 +100,5 @@ Route::put('sistema/control/grado/status/activo/{id_level}',[LevelController::cl
 //Crud Asignación de profesor a materia
 Route::resource('sistema/control/asignacion/docente/materia', CourseTeacherController::class)->names('admin.assignment.course.teacher')->middleware('auth');
 
-//Ruta de ejemplo para carga de calificaciones
-Route::get('sistema/asignacion/calificaiones', function() {
-    return view('calificaciones1');
-});
-
-Route::get('sistema/asignacion/calificaiones/grupo', function() {
-    return view('calificaciones2');
-});
+//Crud Asignación de profesor a materia
+Route::resource('sistema/control/asignacion/materia/grado', LevelCoursesController::class)->names('admin.assignment.level.course')->middleware('auth');

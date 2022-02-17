@@ -18,11 +18,14 @@ class CreateCeCourseTable extends Migration
             $table->charset = 'utf8mb4';
             $table->increments('id_course')->length(11);
             $table->text('name');
-            $table->integer('rep_sep')->length(11);
+            $table->text('nickname')->nullable();
             $table->text('nick_sep')->nullable();
-            $table->text('status');
+            $table->integer('rep_sep')->length(11);
             $table->text('cycle');
+            $table->integer('id_area')->length(11)->nullable()->unsigned();
+            $table->text('status');
             $table->integer('user_modification')->length(11);
+            $table->foreign('id_area')->references('id_area')->on('ce_area');
             $table->timestamps();
         });
     }

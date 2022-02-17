@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin\Course;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ce_area;
 use App\Models\Ce_course;
-use Illuminate\Http\Request;
 use App\Models\Ce_cycle;
+use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
@@ -19,7 +20,8 @@ class CourseController extends Controller
         $activos = Ce_course::where('status', 'Activo')->count();
         $suspendidos = Ce_course::where('status', 'Suspendido')->count();
         $cycles = Ce_cycle::where('status', 'Activo')->get();
-        return view('system/admin/course/index', compact(['activos', 'suspendidos', 'cycles']));
+        $areas = Ce_area::where('status', 'Activo')->get();
+        return view('system/admin/course/index', compact(['activos', 'suspendidos', 'cycles', 'areas']));
     }
 
     /**
@@ -40,13 +42,15 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request) {
+         if ($request) {
             $user = auth()->user()->id;
             $course = new Ce_course();
             $course->name = $request->input('name');
+            $course->nickname = $request->input('nickname');
             $course->rep_sep = $request->input('rep_sep');
             $course->nick_sep = $request->input('nick_sep');
             $course->cycle = $request->input('cycle');
+            $course->id_area = $request->input('id_area');
             $course->user_modification = $user;
             $course->status = 'Activo';
             $course->save();
@@ -90,6 +94,7 @@ class CourseController extends Controller
             $user = auth()->user()->id;
             $course = Ce_course::findOrFail($id);
             $course->name = $request->input('name');
+            $course->nickname = $request->input('nickname');
             $course->rep_sep = $request->input('rep_sep');
             $course->nick_sep = $request->input('nick_sep');
             $course->cycle = $request->input('cycle');

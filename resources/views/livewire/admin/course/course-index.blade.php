@@ -9,11 +9,10 @@
             <table class="table table-striped text-center">
                 <thead>
                     <tr class="text-uppercase">
+                        <th>Nombre (boleta)</th>
                         <th>Nombre</th>
-                        <th>Materia SEP</th>
                         <th>Nombre SEP</th>
-                        <th>Fecha de creación</th>
-                        <th>Fecha de actualización</th>
+                        <th>Nivel escolar</th>
                         <th>Estatus</th>
                         <th>Ver</th>
                     </tr>
@@ -22,14 +21,15 @@
                     @foreach($courses as $course)
                     <tr>
                         <td>{{ $course->name }}</td>
-                        @if($course->rep_sep==1)
-                        <td>Si</td>
-                        @else
-                        <td>No</td>
-                        @endif
+                        <td>{{ $course->nickname }}</td>
                         <td>{{ $course->nick_sep }}</td>
-                        <td>{{ $course->created_at->format('d/m/Y') }}</td>
-                        <td>{{ $course->updated_at->format('d/m/Y') }}</td>
+                        @if($course->id_area == "1")
+                        <td>Preescolar</td>
+                        @elseif($course->id_area == "2")
+                        <td>Primaria</td>
+                        @elseif($course->id_area == "3")
+                        <td>Secundaria</td>
+                        @endif
                         <td>
                             @if($course->status === "Activo")
                             <form method="post" action="{{ route('course.status.suspendido', $course->id_course) }}" class="form-suspender">

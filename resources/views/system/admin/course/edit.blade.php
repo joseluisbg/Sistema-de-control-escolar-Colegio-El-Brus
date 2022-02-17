@@ -16,16 +16,24 @@
           @method('put')
           @csrf
           <div class="row">
-              <div class="col">
-                <label>Nombre:</label>
+              <div class="col-4">
+                <label>Nombre de la materia: (boleta)</label>
                 <input name="name" type="text" class="form-control" value="{{ $course->name }}" maxlength="50">
               </div>
-              <div class="col">
+              <div class="col-4">
+                <label>Nombre de la materia:</label>
+                <input name="nickname" type="text" class="form-control" value="{{ $course->nickname }}" maxlength="50">
+              </div>
+              <div class="col-4">
               <label>¿Reporta calificación a la SEP?</label>
                 <select class="form-control" name="rep_sep" required>
-                  <option selected disabled value="{{ $course->rep_sep }}">Seleccionar</option>
-                  <option value="1">Si</option>
+                  @if($course->rep_sep == 1)
+                  <option selected value="{{ $course->rep_sep }}">Si</option>
                   <option value="2">No</option>
+                  @elseif($course->rep_sep == 0)
+                  <option value="{{ $course->rep_sep }}">No</option>
+                   <option value="1">Si</option>
+                  @endif
                 </select>
               </div>
               <div class="col">

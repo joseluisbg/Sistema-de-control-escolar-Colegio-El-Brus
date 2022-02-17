@@ -21,6 +21,7 @@ class CourseTeacherController extends Controller
         //$suspendidos = Ce_course::where('status', 'Suspendido')->count();
         //, compact(['activos', 'suspendidos'])
         $materias = DB::table('ce_course')->get();
+        //return $materias;
         return view('system/admin/assignment/course-teacher/index', compact(['materias']));
 
     }

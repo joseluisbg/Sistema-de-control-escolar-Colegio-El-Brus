@@ -311,6 +311,11 @@ return [
                     'route'  => 'admin.assignment.course.teacher.index',
                     'icon' => 'fas fa-fw fa-clock',
                 ],
+                [
+                    'text' => 'Materia a Grado',
+                    'route'  => 'admin.assignment.level.course.index',
+                    'icon' => 'fas fa-fw fa-clock',
+                ],
             ],
         ],
         // [

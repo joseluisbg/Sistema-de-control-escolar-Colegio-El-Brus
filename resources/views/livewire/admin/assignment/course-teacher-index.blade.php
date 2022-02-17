@@ -32,12 +32,12 @@ use App\Models\Ce_course;
             <td>{{ $course->nick_sep }}</td>
             <td width="10px">
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ $course->name }}">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pop{{ $course->id_course }}">
                 <i class="fas fa-plus"></i>
               </button>
 
               <!-- Modal -->
-              <div class="modal fade" id="{{ $course->name }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal fade" id="pop{{ $course->id_course }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
