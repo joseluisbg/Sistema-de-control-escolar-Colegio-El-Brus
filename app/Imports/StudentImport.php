@@ -22,6 +22,7 @@ class StudentImport implements ToModel
         $estudiante = new Ce_student([
             'matricula' => $row[0],
             'name' => $row[1],
+            'id_area'=> $row[2],
             'date_ofbirth' => $fecha,
             //'date_ofbirth' => date('d/m/Y', $date),
             'curp' => $row[7],

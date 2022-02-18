@@ -316,6 +316,11 @@ return [
                     'route'  => 'admin.assignment.level.course.index',
                     'icon' => 'fas fa-fw fa-clock',
                 ],
+                [
+                    'text' => 'Alumnos a grupo',
+                    'route'  => 'admin.assignment.student.group.index',
+                    'icon' => 'fas fa-fw fa-clock',
+                ],
             ],
         ],
         // [

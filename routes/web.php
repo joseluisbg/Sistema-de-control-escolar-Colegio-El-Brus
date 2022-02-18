@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SchoolControl\SchoolControlController;
 use App\Http\Controllers\Admin\Student\StudentController;
 use App\Http\Controllers\Admin\Teacher\TeacherController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\StudentsGroupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -102,3 +103,6 @@ Route::resource('sistema/control/asignacion/docente/materia', CourseTeacherContr
 
 //Crud Asignación de profesor a materia
 Route::resource('sistema/control/asignacion/materia/grado', LevelCoursesController::class)->names('admin.assignment.level.course')->middleware('auth');
+
+//Crud Asignación de alumnos a grupo
+Route::resource('sistema/control/asignacion/alumnos/grupo', StudentsGroupController::class)->names('admin.assignment.student.group')->middleware('auth');

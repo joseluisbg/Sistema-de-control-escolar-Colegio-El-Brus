@@ -27,5 +27,6 @@ class Ce_student extends Model
             'cp',
             'user_modification',
             'status',
+            'id_area',
     ];
 }

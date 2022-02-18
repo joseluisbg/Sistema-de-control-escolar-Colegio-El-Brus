@@ -22,6 +22,7 @@ class CreateCeUserEnrolmentTable extends Migration
             $table->integer('id_lg')->length(11)->nullable()->unsigned();
             $table->foreign('id_lg')->references('id_lg')->on('ce_level_groups');
             $table->foreign('id_course')->references('id_course')->on('ce_course');
+            $table->timestamps();
         });
     }
 
