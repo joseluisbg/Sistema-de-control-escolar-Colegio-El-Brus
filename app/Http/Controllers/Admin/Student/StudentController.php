@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Admin\Student;
 use App\Http\Controllers\Controller;
 use App\Imports\StudentImport;
 use App\Imports\TutorImport;
+use App\Models\Ce_area;
 use App\Models\Ce_student;
 use App\Models\Ce_tutor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -34,7 +35,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('system/admin/student/create');
+        $areas = Ce_area::where('status', 'Activo')->get();
+        return view('system/admin/student/create', compact('areas'));
     }
 
     /**
@@ -57,6 +59,7 @@ class StudentController extends Controller
             $student->state = $request->input('state');
             $student->cp = $request->input('cp');
             $student->date_ofbirth = $request->input('date_ofbirth');
+            $student->id_area = $request->input('id_area');
             $student->status = "Activo";
             $student->user_modification = $user;
             $student->save();
@@ -136,6 +139,7 @@ class StudentController extends Controller
             $student->state = $request->input('state');
             $student->cp = $request->input('cp');
             $student->date_ofbirth = $request->input('date_ofbirth');
+            $student->id_area = $request->input('id_area');
             $student->user_modification = $user;
             $student->update();
             $principal = Ce_tutor::where('curp_student', $curp_principal)->where('principal', $prin_principal)->firstorfail();

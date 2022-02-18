@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Admin\Assignment\CourseTeacherController;
 use App\Http\Controllers\Admin\Assignment\LevelCoursesController;
+use App\Http\Controllers\Admin\Assignment\StudentGroupController;
 use App\Http\Controllers\Admin\Course\CourseController;
 use App\Http\Controllers\Admin\Cycle\CycleController;
 use App\Http\Controllers\Admin\Director\DirectorController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\Admin\SchoolControl\SchoolControlController;
 use App\Http\Controllers\Admin\Student\StudentController;
 use App\Http\Controllers\Admin\Teacher\TeacherController;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\StudentsGroupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -105,4 +105,4 @@ Route::resource('sistema/control/asignacion/docente/materia', CourseTeacherContr
 Route::resource('sistema/control/asignacion/materia/grado', LevelCoursesController::class)->names('admin.assignment.level.course')->middleware('auth');
 
 //Crud Asignación de alumnos a grupo
-Route::resource('sistema/control/asignacion/alumnos/grupo', StudentsGroupController::class)->names('admin.assignment.student.group')->middleware('auth');
+Route::resource('sistema/control/asignacion/alumnos/grupo', StudentGroupController::class)->names('admin.assignment.student.group')->middleware('auth');

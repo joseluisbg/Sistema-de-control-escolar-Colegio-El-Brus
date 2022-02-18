@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Assignment;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ce_level_groups;
 use App\Models\Ce_level;
@@ -9,7 +10,7 @@ use App\Models\Ce_group;
 use App\Models\Ce_student;
 use App\Models\Ce_user_enrolment;
 
-class StudentsGroupController extends Controller
+class StudentGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,7 +31,7 @@ class StudentsGroupController extends Controller
             ->join('ce_group as G', 'ce_level_groups.id_group', '=', 'G.id_group')
             ->select('ce_level_groups.id_lg AS idlg','L.name AS nomL','G.name AS nomG','L.id_area AS area')
             ->where('L.id_area', '=', 3)->get();
-        return view('calificaciones1', compact(['preescolar', 'primaria', 'secundaria']));
+        return view('system/admin/assignment/student-group/index', compact(['preescolar', 'primaria', 'secundaria']));
     }
 
     /**
@@ -59,7 +60,7 @@ class StudentsGroupController extends Controller
                 $lg -> id_user= $dato;
                 $lg->save();
             };
-            return redirect()->route('admin.assignment.student.group.index');
+            return redirect()->route('admin.assignment.student.group.index')->with('Registrar', 'ok');
         }
     }
 
@@ -90,13 +91,13 @@ class StudentsGroupController extends Controller
         ->join('ce_group as G', 'ce_level_groups.id_group', '=', 'G.id_group')
         ->where('ce_level_groups.id_lg', '=', $lg)->get('L.id_area');
         $area=$area[0]["id_area"];
-        $students = Ce_student::where('id_area', $area)->where('status','Activo')->paginate(10);
+        $students = Ce_student::where('id_area', $area)->where('status','Activo')->get();
 
         $alumasign=Ce_user_enrolment::join('ce_student as S', 'ce_user_enrolment.id_user', '=', 'S.id_student')
         ->join('ce_level_groups as LG', 'ce_user_enrolment.id_lg', '=', 'LG.id_lg')
         ->select('S.name AS nombre')
-        ->where('LG.id_lg', $lg)->paginate(10);
-        return view('asignacionStudentGroup',compact('students','infolg','alumasign'));
+        ->where('LG.id_lg', $lg)->get();
+        return view('system/admin/assignment/student-group/create',compact('students','infolg','alumasign'));
     }
 
     /**
@@ -108,7 +109,7 @@ class StudentsGroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-      
+
     }
 
     /**
@@ -121,5 +122,5 @@ class StudentsGroupController extends Controller
     {
         //
     }
-   
+
 }

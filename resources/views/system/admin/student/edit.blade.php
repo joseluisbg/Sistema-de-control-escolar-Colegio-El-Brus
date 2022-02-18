@@ -68,6 +68,24 @@
                 <label>Fecha de nacimiento:</label>
                 <input name="date_ofbirth" type="date" class="form-control" value="{{$tfecha}}" required>
               </div>
+              <div class="col">
+                <label>Nivel escolar:</label>
+                <select class="form-control" name="id_area" required>
+                  @if($student[0]->id_area == "1")
+                  <option value="{{ $student[0]->id_area }}" selected>Preescolar</option>
+                  <option value="2">Primaria</option>
+                  <option value="3">Secundaria</option>
+                  @elseif($student[0]->id_area == "2")
+                  <option value="1">Preescolar</option>
+                  <option value="{{ $student[0]->id_area }}" selected>Primaria</option>
+                  <option value="3">Secundaria</option>
+                  @elseif($student[0]->id_area == "3")
+                  <option value="1">Preescolar</option>
+                  <option value="2">Primaria</option>
+                  <option value="{{ $student[0]->id_area }}" selected>Secundaria</option>
+                  @endif
+                </select>
+              </div>
             </div>
             <div class="row mt-4">
               <h3 class="text-uppercase font-weight-bold mb-4">Datos del tutor principal</h3>

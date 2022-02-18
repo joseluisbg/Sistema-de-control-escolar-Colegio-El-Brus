@@ -56,6 +56,15 @@
                 <label>Fecha de nacimiento:</label>
                 <input name="date_ofbirth" type="date" class="form-control" placeholder="Ingrese la fecha de nacimiento" required>
               </div>
+              <div class="col">
+              <label>Nivel escolar:</label>
+              <select class="form-control" name="id_area" required>
+                <option selected disabled value="">Seleccionar</option>
+                @foreach($areas as $area)
+                <option value="{{ $area->id_area }}">{{ $area->name }}</option>
+                @endforeach
+              </select>
+            </div>
             </div>
             <div class="row mt-4">
               <h3 class="text-uppercase font-weight-bold mb-4">Datos del tutor principal</h3>
