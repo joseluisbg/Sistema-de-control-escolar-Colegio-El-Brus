@@ -102,7 +102,8 @@ Route::put('sistema/control/grado/status/activo/{id_level}',[LevelController::cl
 Route::resource('sistema/control/asignacion/docente/materia', CourseTeacherController::class)->names('admin.assignment.course.teacher')->middleware('auth');
 
 //Crud Asignación de profesor a materia
-Route::resource('sistema/control/asignacion/materia/grado', LevelCoursesController::class)->names('admin.assignment.level.course')->middleware('auth');
+//Route::resource('sistema/control/asignacion/materia/grado', LevelCoursesController::class)->names('admin.assignment.level.course')->middleware('auth');
+Route::resource('sistema/control/asignacion/materia/grupo', LevelCoursesController::class)->names('admin.assignment.level.course')->middleware('auth');
 
 //Crud Asignación de alumnos a grupo
 Route::resource('sistema/control/asignacion/alumnos/grupo', StudentGroupController::class)->names('admin.assignment.student.group')->middleware('auth');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Assignment;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ce_level_courses;
+use App\Models\Ce_lg_ct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -38,20 +39,21 @@ class LevelCoursesController extends Controller
      */
     public function store(Request $request)
     {
-        $user = auth()->user()->id;
-        $id_course = $request->input('id_course');
-        $id_level = $request->input('id_level');
-        $registros = Ce_level_courses::where('id_course', '=', $id_course)->where('id_level', '=', $id_level)->get();
-        if ($registros->isEmpty()) {
-            $level = new Ce_level_courses();
-            $level->id_course = $request->input('id_course');
-            $level->id_level = $request->input('id_level');
-            $level->status = 'Activo';
-            $level->user_modification = $user;
-            $level->save();
+        // $user = auth()->user()->id;
+         $id_ct = $request->input('id_ct');
+         $id_lg = $request->input('id_lg');
+         $registros = Ce_lg_ct::where('id_lg', '=', $id_lg)->where('id_ct', '=', $id_ct)->get();
+         if ($registros->isEmpty()) {
+            $lgct = new Ce_lg_ct();
+            $lgct->id_ct = $request->input('id_ct');
+            $lgct->id_lg = $request->input('id_lg');
+            //$lgct->status = 'Activo';
+            //$lgct->user_modification = $user;
+            $lgct->save();
             return redirect()->route('admin.assignment.level.course.index')->with('Asignado', 'ok');
         }else
         return redirect()->route('admin.assignment.level.course.index')->with('Existe', 'ok');
+        //return $request;
     }
 
     /**

@@ -312,7 +312,7 @@ return [
                     'icon' => 'fas fa-fw fa-clock',
                 ],
                 [
-                    'text' => 'Materia a Grado',
+                    'text' => 'Materia a Grupo',
                     'route'  => 'admin.assignment.level.course.index',
                     'icon' => 'fas fa-fw fa-clock',
                 ],
