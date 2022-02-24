@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Assignment\StudentGroupController;
 use App\Http\Controllers\Admin\Course\CourseController;
 use App\Http\Controllers\Admin\Cycle\CycleController;
 use App\Http\Controllers\Admin\Director\DirectorController;
+use App\Http\Controllers\Admin\Evaluations\EvaluationsController;
 use App\Http\Controllers\Admin\Group\GroupController;
 use App\Http\Controllers\Admin\Level\LevelController;
 use App\Http\Controllers\Admin\SchoolControl\SchoolControlController;
@@ -90,6 +91,8 @@ Route::resource('sistema/control/materia', CourseController::class)->names('admi
 Route::put('sistema/control/materia/status/suspendido/{id_course}',[CourseController::class,'statusA'])->name('course.status.suspendido')->middleware('auth');
 //Suspender las materias
 Route::put('sistema/control/materia/status/activo/{id_course}',[CourseController::class,'statusS'])->name('course.status.activo')->middleware('auth');
+//Registro de rubro en la materia
+Route::post('sistema/control/materia/rubro', [CourseController::class,'registroRurbo'])->name('admin.course.registro.rubro')->middleware('auth');
 
 //Crud para los grados
 Route::resource('sistema/control/grado', LevelController::class)->names('admin.level')->middleware('auth');
@@ -107,3 +110,13 @@ Route::resource('sistema/control/asignacion/materia/grupo', LevelCoursesControll
 
 //Crud Asignación de alumnos a grupo
 Route::resource('sistema/control/asignacion/alumnos/grupo', StudentGroupController::class)->names('admin.assignment.student.group')->middleware('auth');
+
+//Vistas asignació de calificaciones
+Route::resource('sistema/asignacion/evaluacion', EvaluationsController::class)->names('admin.evaluations')->middleware('auth');
+Route::post('sistema/asignacion/evaluacion/actualizacion', [EvaluationsController::class, 'actualizarRegistros'])->name('admin.evaluations.actualizar')->middleware('auth');
+
+//
+
+/*Route::get('sistema/asignacion/calificaiones2', function () {
+    return view('calificaciones2');
+})->middleware('auth');*/

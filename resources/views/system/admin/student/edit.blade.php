@@ -13,7 +13,6 @@
         <div class="card-body">
           <h3 class="text-uppercase mb-4">Datos del alumno: <strong>{{ $student[0]->name }}&nbsp;</strong></h3>
           <form method="post" action="{{ route('admin.student.update',$student[0]->id_student) }}" class="form-registrar" autocomplete="off">
-          @method('put')
           @csrf
           <div class="row">
               <div class="col">

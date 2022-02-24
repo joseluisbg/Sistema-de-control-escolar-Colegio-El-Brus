@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Ce_area;
 use App\Models\Ce_course;
 use App\Models\Ce_cycle;
+use App\Models\ce_rubro_course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -77,8 +78,9 @@ class CourseController extends Controller
      */
     public function edit($course)
     {
+        $rubros = ce_rubro_course::where('id_course', '=', $course)->paginate(10);
         $course = Ce_course::findOrFail($course);
-        return view('system/admin/course/edit', compact('course'));
+        return view('system/admin/course/edit', compact(['course', 'rubros']));
     }
 
     /**
@@ -129,5 +131,16 @@ class CourseController extends Controller
             $student->status = "Activo";
             $student->update();
             return redirect()->route('admin.course.index')->with('Activo', 'ok');
+    }
+    public function registroRurbo(Request $request){
+        if ($request) {
+            $rubro = new ce_rubro_course();
+            $rubro->rubro = $request->input('rubro');
+            $rubro->porcentaje = $request->input('porcentaje');
+            $rubro->id_course = $request->input('id_course');
+            $rubro->status = 'Activo';
+            $rubro->save();
+            return redirect()->route('admin.course.index')->with('Registrar-rubro', 'ok');
+        }
     }
 }

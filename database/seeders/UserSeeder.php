@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Ce_student;
-use App\Models\Ce_level;
 use App\Models\Ce_area;
+use App\Models\Ce_level;
+use App\Models\Ce_period;
+use App\Models\Ce_permissions;
+use App\Models\Ce_student;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -76,5 +78,42 @@ class UserSeeder extends Seeder
         'status' => 'Activo',
         'user_modification' => '1',
     ]);
+
+        Ce_period::create([
+        'name'  => 'Periodo 1',
+        'status' => 'Activo',
+        'user_modification' => '1',
+    ]);
+
+        Ce_period::create([
+        'name'  => 'Periodo 2',
+        'status' => 'Activo',
+        'user_modification' => '1',
+    ]);
+
+        Ce_period::create([
+        'name'  => 'Periodo 3',
+        'status' => 'Activo',
+        'user_modification' => '1',
+    ]);
+
+        Ce_permissions::create([
+        'name'  => 'Periodo 1',
+        'status' => 'Activo',
+        'user_modification' => '1',
+    ]);
+
+        Ce_permissions::create([
+        'name'  => 'Periodo 2',
+        'status' => 'Activo',
+        'user_modification' => '1',
+    ]);
+
+        Ce_permissions::create([
+        'name'  => 'Periodo 3',
+        'status' => 'Activo',
+        'user_modification' => '1',
+    ]);
+
     }
 }

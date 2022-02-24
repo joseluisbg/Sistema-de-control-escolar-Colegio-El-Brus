@@ -150,6 +150,13 @@
                     @endforeach
                 </tbody>
             </table>
+            @if(count($level_groups) <= 0)
+            <tr>
+                <div class="card-body p-3">
+                    <strong style="text-transform: uppercase; color: red;">No existen registros.</strong>
+                </div>
+            </tr>
+            @endif
         </div>
       </div>
     </div>

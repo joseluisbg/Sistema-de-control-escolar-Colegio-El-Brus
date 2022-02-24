@@ -35,6 +35,13 @@
                             @endforeach
                         </tbody>
                     </table>
+                    @if(count($preescolar) <= 0)
+                    <tr>
+                        <div class="card-body p-3">
+                            <strong style="text-transform: uppercase; color: red;">No existen registros.</strong>
+                        </div>
+                    </tr>
+                    @endif
                 </div>
             </div>
         </div>
@@ -68,6 +75,13 @@
                             @endforeach
                         </tbody>
                     </table>
+                    @if(count($primaria) <= 0)
+                    <tr>
+                        <div class="card-body p-3">
+                            <strong style="text-transform: uppercase; color: red;">No existen registros.</strong>
+                        </div>
+                    </tr>
+                    @endif
                 </div>
             </div>
         </div>
@@ -101,6 +115,13 @@
                             @endforeach
                         </tbody>
                     </table>
+                    @if(count($secundaria) <= 0)
+                    <tr>
+                        <div class="card-body p-3">
+                            <strong style="text-transform: uppercase; color: red;">No existen registros.</strong>
+                        </div>
+                    </tr>
+                    @endif
                 </div>
             </div>
         </div>

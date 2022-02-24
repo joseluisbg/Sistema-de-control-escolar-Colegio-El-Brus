@@ -21,7 +21,7 @@ class CreateCeGradesTable extends Migration
             $table->integer('id_teacher')->length(11)->nullable()->unsigned();
             $table->integer('id_course')->length(11)->nullable()->unsigned();
             $table->integer('id_cycle')->length(11)->nullable()->unsigned();
-            $table->integer('id_ie')->length(11)->nullable()->unsigned();
+            $table->integer('id_rc')->length(11)->nullable()->unsigned();
             $table->integer('id_period')->length(11)->nullable()->unsigned();
             $table->text('value');
             $table->text('status');
@@ -31,7 +31,7 @@ class CreateCeGradesTable extends Migration
             $table->foreign('id_course')->references('id_course')->on('ce_course');
             //$table->foreign('id_teacher')->references('id_teacher')->on('ce_teacher');
             $table->foreign('id_cycle')->references('id_cycle')->on('ce_cycle');
-            $table->foreign('id_ie')->references('id_ie')->on('ce_item_evaluation');
+            $table->foreign('id_rc')->references('id_rc')->on('ce_rubro_course');
             $table->foreign('id_period')->references('id_period')->on('ce_period');
         });
     }
