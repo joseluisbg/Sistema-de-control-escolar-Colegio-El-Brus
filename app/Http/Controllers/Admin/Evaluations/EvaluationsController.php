@@ -30,8 +30,16 @@ class EvaluationsController extends Controller
             ->join('ce_group as G', 'LG.id_group', '=', 'G.id_group')
             ->join('ce_level as LV', 'LG.id_level', '=', 'LV.id_level')
             ->join('ce_course as C', 'CT.id_course', '=', 'C.id_course')
-            ->select('ce_lg_ct.id_lgct as idlgct', 'LG.id_lg as idlg', 'CT.id_ct as idct', 'G.name as nameGroup',
-                'LV.name as nameLevel', 'C.name as nameCourse')->where('CT.id_user', '=', $user)->get();
+            ->select(
+                'ce_lg_ct.id_lgct as idlgct',
+                'LG.id_lg as idlg',
+                'CT.id_ct as idct',
+                'G.name as nameGroup',
+                'LV.name as nameLevel',
+                'C.name as nameCourse',
+                'CT.id_course as idcourse',
+                'ce_lg_ct.id_lgct as id_lgct'
+            )->where('CT.id_user', '=', $user)->get();
         return view('system/admin/evaluations/index', compact(['grupos']));
         //return $grupos;
     }
@@ -55,33 +63,33 @@ class EvaluationsController extends Controller
     public function store(Request $request)
     {
         //return $request;
-         if ($request) {
+        if ($request) {
             //$id_students = $request->input('id_student');
             //$values = $request->input('value');
             $user = auth()->user()->id;
-            $valor=$request->input('id_student');
-            $conteo=count($valor);
-            for($i=0;$i<$conteo;$i++){
+            $valor = $request->input('id_student');
+            $conteo = count($valor);
+            for ($i = 0; $i < $conteo; $i++) {
                 $res = new Ce_grades();
-                    //$id=$request->input('id_student');
-                    //$cal=$request->input('value');
-                $res->id_student=$request->input('id_student')[$i];
-                $res->value=$request->input('value')[$i];
-                $res->id_teacher=$request->input('id_teacher');
-                $res->id_course=$request->input('id_course');
-                $res->id_cycle=$request->input('id_cycle');
-                $res->id_period=$request->input('id_period');
-                $res->id_rc=$request->input('id_rc')[$i];
-                $res->status= "Activo";
-                $res->user_modification= $user;
-                    //$res="Calificación: ".$cal." Id del estudiante: ".$id;
-                    $res->save();
-    //return array($res);
+                //$id=$request->input('id_student');
+                //$cal=$request->input('value');
+                $res->id_student = $request->input('id_student')[$i];
+                $res->value = $request->input('value')[$i];
+                $res->id_teacher = $request->input('id_teacher');
+                $res->id_course = $request->input('id_course');
+                $res->id_cycle = $request->input('id_cycle');
+                $res->id_period = $request->input('id_period');
+                $res->id_rc = $request->input('id_rc')[$i];
+                $res->status = "Activo";
+                $res->user_modification = $user;
+                //$res="Calificación: ".$cal." Id del estudiante: ".$id;
+                $res->save();
+                //return array($res);
             };
             return redirect()->route('admin.evaluations.index')->with('Registrar', 'ok');
-           // return redirect()->route('admin.evaluations.index')->with('Registrar', 'ok');
-           // return array($res);
-            }
+            // return redirect()->route('admin.evaluations.index')->with('Registrar', 'ok');
+            // return array($res);
+        }
         //$res="Calificación: ".$request['value'][2]." Id del estudiante: ".$request['id_student'][2];
         //return $res;
     }
@@ -103,31 +111,44 @@ class EvaluationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_lg)
+    public function edit($id_lgct)
     {
         $studentEval = Ce_user_enrolment::join('ce_student as S', 'ce_user_enrolment.id_user', '=', 'S.id_student')
-        ->join('ce_level_groups as LG', 'ce_user_enrolment.id_lg', '=', 'LG.id_lg')
-        ->join('ce_grades as G', 'ce_user_enrolment.id_user', '=', 'G.id_student')
-        ->where('LG.id_lg', $id_lg)->get();
-        $conteo = ce_rubro_course::where('id_course', '=', $id_lg)->count();
+            ->join('ce_level_groups as LG', 'ce_user_enrolment.id_lg', '=', 'LG.id_lg')
+            ->join('ce_lg_ct as LGCT', 'LG.id_lg', '=', 'LGCT.id_lg')
+            ->select('S.name AS nombre', 'S.id_student as idEstudent')
+            ->where('LGCT.id_lgct', $id_lgct)->get();
+        $conteo = ce_rubro_course::join('ce_course_teacher as CT', 'ce_rubro_course.id_course', '=', 'CT.id_course')
+            ->join('ce_lg_ct as LGCT', 'CT.id_ct', '=', 'LGCT.id_ct')
+            ->where('LGCT.id_lgct', '=', $id_lgct)->count();
+        $course = Ce_course::join('ce_course_teacher as CT', 'ce_course.id_course', '=', 'CT.id_course')
+            ->join('ce_lg_ct as LGCT', 'CT.id_ct', '=', 'LGCT.id_ct')
+            ->select('ce_course.id_course AS id_course', 'ce_course.cycle AS ciclo','ce_course.name AS curso')
+            ->where('LGCT.id_lgct', '=', $id_lgct)->first();
+        $nameCycle = $course->ciclo;
+        $cycle = Ce_cycle::where('name', '=', $nameCycle)->first();
         $permission1 = Ce_permissions::where('id_permission', '=', 1)->first();
         $permission2 = Ce_permissions::where('id_permission', '=', 2)->first();
         $permission3 = Ce_permissions::where('id_permission', '=', 3)->first();
-        $periodo1 = Ce_grades::where('id_period', '=', 1)->get();
-        $periodo2 = Ce_grades::where('id_period', '=', 2)->get();
-        $periodo3 = Ce_grades::where('id_period', '=', 3)->get();
-        $rubros = ce_rubro_course::where('id_course', '=', $id_lg)->get();
-        $grupoinfo = Ce_group::where('id_group', '=', $id_lg)->first();
-        $levelinfo = Ce_level::where('id_level', '=', $id_lg)->first();
+        $periodo1 = Ce_grades::where('id_period', '=', 1)->where('id_course', '=', $course->id_course)->get();
+        $periodo2 = Ce_grades::where('id_period', '=', 2)->where('id_course', '=', $course->id_course)->get();
+        $periodo3 = Ce_grades::where('id_period', '=', 3)->where('id_course', '=', $course->id_course)->get();
+        $rubros = ce_rubro_course::join('ce_course_teacher as CT', 'ce_rubro_course.id_course', '=', 'CT.id_course')
+            ->join('ce_lg_ct as LGCT', 'CT.id_ct', '=', 'LGCT.id_ct')
+            ->where('LGCT.id_lgct', '=', $id_lgct)->get();
+        $levelinfo = Ce_level::join('ce_level_groups as LG', 'ce_level.id_level', '=', 'LG.id_level')
+            ->join('ce_lg_ct as LGCT', 'LG.id_lg', '=', 'LGCT.id_lg')
+            ->join('ce_group as G', 'LG.id_group', '=', 'G.id_group')
+            ->select('ce_level.name AS nameL', 'G.name AS nameG')
+            ->where('LGCT.id_lgct', '=', $id_lgct)->first();
         $teacher = auth()->user()->id;
-        $course = Ce_course::where('id_course', '=', $id_lg)->first();
-        $nameCycle = $course->cycle;
-        $cycle = Ce_cycle::where('name', '=', $nameCycle)->first();
-        $alumnos = Ce_user_enrolment::join('ce_student as S', 'ce_user_enrolment.id_user', '=', 'S.id_student')
-        ->join('ce_level_groups as LG', 'ce_user_enrolment.id_lg', '=', 'LG.id_lg')
-        ->select('S.name AS nombre', 'S.id_student as idEstudent')
-        ->where('LG.id_lg', $id_lg)->get();
-        return view('system/admin/evaluations/create', compact(['alumnos', 'grupoinfo', 'levelinfo','teacher', 'course', 'cycle', 'permission1', 'permission2', 'permission3','periodo1', 'periodo2', 'periodo3', 'rubros', 'studentEval', 'conteo']));
+        $calificaciones = Ce_grades::where('id_course', '=', $course->id_course)->get();
+      
+        return view('system/admin/evaluations/create', compact([
+            'levelinfo', 'teacher', 'course', 'cycle', 'permission1',
+            'permission2', 'permission3', 'periodo1', 'periodo2', 'periodo3', 'rubros', 'studentEval', 'conteo', 'calificaciones'
+        ]));
+       // return $studentEval;
     }
 
     /**
@@ -153,7 +174,8 @@ class EvaluationsController extends Controller
         //
     }
 
-    public function actualizarRegistros(Request $request){
+    public function actualizarRegistros(Request $request)
+    {
         return $request;
     }
 }

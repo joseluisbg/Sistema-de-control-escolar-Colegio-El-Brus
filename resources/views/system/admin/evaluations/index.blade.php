@@ -30,7 +30,7 @@
                                 <td>{{ $grupo->nameLevel }}</td>
                                 <td>{{ $grupo->nameCourse }}</td>
                                 <td width="10px">
-                                    <a href="{{ route('admin.evaluations.edit',  $grupo->idlg) }}" class="btn btn-primary">
+                                    <a href="{{ route('admin.evaluations.edit',  $grupo->id_lgct) }}" class="btn btn-primary">
                                         <span class="fas fa-sign-in-alt"></span>
                                     </a>
                                 </td>
