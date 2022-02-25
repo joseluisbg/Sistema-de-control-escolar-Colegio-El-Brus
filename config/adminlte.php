@@ -244,11 +244,12 @@ return [
             'url'         => 'escritorio',
             'icon'        => 'fas fa-fw fa-chalkboard',
         ],
-        ['header' => 'CALIFICACIÓNES'],
+        ['header' => 'CALIFICACIÓNES', 'can' => 'Docente'],
         [
             'text'        => 'Asignar calificación',
             'route'         => 'admin.evaluations.index',
             'icon'        => 'fas fa-fw fa-edit',
+            'can' => 'Docente',
         ],
         ['header' => 'GESTIÓN DE USUARIOS'],
         [
@@ -277,10 +278,11 @@ return [
                 ],
             ],
         ],
-        ['header' => 'GESTIÓN ESCOLAR'],
+        ['header' => 'GESTIÓN ESCOLAR', 'can' => 'Administador'],
         [
             'text'    => 'Control escolar',
             'icon'    => 'fas fa-fw fa-graduation-cap',
+            'can' => 'Administador',
             'submenu' => [
                 [
                     'text' => 'Ciclo',
@@ -307,19 +309,26 @@ return [
                 [
                     'text' => 'Docente a materia',
                     'route'  => 'admin.assignment.course.teacher.index',
-                    'icon' => 'fas fa-fw fa-clock',
+                    'icon' => 'fas fa-fw fa-user',
                 ],
                 [
                     'text' => 'Materia a Grupo',
                     'route'  => 'admin.assignment.level.course.index',
-                    'icon' => 'fas fa-fw fa-clock',
+                    'icon' => 'fas fa-fw fa-book',
                 ],
                 [
                     'text' => 'Alumnos a grupo',
                     'route'  => 'admin.assignment.student.group.index',
-                    'icon' => 'fas fa-fw fa-clock',
+                    'icon' => 'fas fa-fw fa-swatchbook',
                 ],
             ],
+        ],
+        ['header' => 'PERIODOS', 'can' => 'Administador'],
+        [
+            'text' => 'Permiso de evaluación',
+            'route'  => 'admin.permissions.index',
+            'icon' => 'fas fa-fw fa-clock',
+            'can' => 'Administador',
         ],
         // [
         //     'text'        => 'Administración',

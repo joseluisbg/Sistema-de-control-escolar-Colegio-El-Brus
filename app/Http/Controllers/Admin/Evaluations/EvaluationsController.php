@@ -158,9 +158,28 @@ class EvaluationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        return $request;
+       //return $request;
+        if ($request) {
+            $user = auth()->user()->id;
+            $valor = $request->input('id_student');
+            $conteo = count($valor);
+            for ($i = 0; $i < $conteo; $i++) {
+                $res = Ce_grades::findOrFail($valor[$i]);
+                $res->id_student = $request->input('id_student')[$i];
+                $res->value = $request->input('value')[$i];
+                $res->id_teacher = $request->input('id_teacher');
+                $res->id_course = $request->input('id_course');
+                $res->id_cycle = $request->input('id_cycle');
+                $res->id_period = $request->input('id_period');
+                $res->id_rc = $request->input('id_rc')[$i];
+                $res->status = "Activo";
+                $res->user_modification = $user;
+                $res->save();
+            };
+            return redirect()->route('admin.evaluations.index')->with('Registrar', 'ok');
+        }
     }
 
     /**
@@ -176,6 +195,24 @@ class EvaluationsController extends Controller
 
     public function actualizarRegistros(Request $request)
     {
-        return $request;
+        if ($request) {
+            $user = auth()->user()->id;
+            $valor = $request->input('id_student');
+            $conteo = count($valor);
+            for ($i = 0; $i < $conteo; $i++) {
+                $res = Ce_grades::findOrFail($request->input('id_student')[$i]);
+                $res->id_student = $request->input('id_student')[$i];
+                $res->value = $request->input('value')[$i];
+                $res->id_teacher = $request->input('id_teacher');
+                $res->id_course = $request->input('id_course');
+                $res->id_cycle = $request->input('id_cycle');
+                $res->id_period = $request->input('id_period');
+                $res->id_rc = $request->input('id_rc')[$i];
+                $res->status = "Activo";
+                $res->user_modification = $user;
+                $res->save();
+            };
+            return redirect()->route('admin.evaluations.index')->with('Registrar', 'ok');
+        }
     }
 }
