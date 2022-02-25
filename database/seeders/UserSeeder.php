@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         'user_modification' => '2',
         'email'     => 'controlescolar@gmail.com',
         'password'  => bcrypt('123456')
-    ])->assignRole('Administrador');
+    ])->assignRole('Control-escolar');
 
         User::create([
         'name'  => 'Maribel',

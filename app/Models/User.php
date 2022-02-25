@@ -69,12 +69,14 @@ class User extends Authenticatable
     public function adminlte_desc(){
         if ($role = auth()->user()->can('Super-administrador')) {
             return $role = "Administrador";
-        }elseif ($role = auth()->user()->can('Adiministador')){
-            return $role = "Control Escolar";
+        }elseif ($role = auth()->user()->can('Administrador')){
+            return $role = "Administrador";
         }elseif ($role = auth()->user()->can('Docente')){
             return $role = "Docente";
         }elseif ($role = auth()->user()->can('Alumno')){
             return $role = "Alumno";
+        }elseif ($role = auth()->user()->can('Control-escolar')){
+            return $role = "Control-escolar";
         }
     }
 

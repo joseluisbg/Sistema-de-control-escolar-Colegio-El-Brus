@@ -17,12 +17,12 @@ class RoleSeeder extends Seeder
     {
         //Seccion para crear roles
         $administrador = Role::create(['name' => 'Super-administrador']);
-        $controlescolar = Role::create(['name' => 'Administrador']);
+        $controlescolar = Role::create(['name' => 'Control-escolar']);
         $docente = Role::create(['name' => 'Docente']);
         $alumno = Role::create(['name' => 'Alumno']);
         //Seccion para crear permisos
         Permission::create(['name' => 'Super-administrador'])->assignRole($administrador);
-        Permission::create(['name' => 'Director'])->assignRole($controlescolar);
+        Permission::create(['name' => 'Control-escolar'])->assignRole($controlescolar);
         Permission::create(['name' => 'Docente'])->assignRole($docente);
         Permission::create(['name' => 'Alumno'])->assignRole($alumno);
     }

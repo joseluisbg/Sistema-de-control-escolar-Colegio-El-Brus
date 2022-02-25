@@ -251,11 +251,11 @@ return [
             'icon'        => 'fas fa-fw fa-edit',
             'can' => 'Docente',
         ],
-        ['header' => 'GESTIÓN DE USUARIOS', 'can' => 'Super-administrador',],
+        ['header' => 'GESTIÓN DE USUARIOS', 'can' => ['Super-administrador', 'Control-escolar']],
         [
             'text'    => 'Control de usuarios',
             'icon'    => 'fas fa-fw fa-cogs',
-            'can' => 'Super-administrador',
+            'can' => ['Super-administrador', 'Control-escolar'],
             'submenu' => [
                 [
                     'text' => 'Directores',
@@ -279,11 +279,11 @@ return [
                 ],
             ],
         ],
-        ['header' => 'GESTIÓN ESCOLAR', 'can' => 'Super-administrador'],
+        ['header' => 'GESTIÓN ESCOLAR', ['Super-administrador', 'Control-escolar']],
         [
             'text'    => 'Control escolar',
             'icon'    => 'fas fa-fw fa-graduation-cap',
-            'can' => 'Super-administrador',
+            'can' => ['Super-administrador', 'Control-escolar'],
             'submenu' => [
                 [
                     'text' => 'Ciclo',
@@ -302,11 +302,11 @@ return [
                 ],
             ],
         ],
-        ['header' => 'ASIGNACIÓNES', 'can' => 'Super-administrador',],
+        ['header' => 'ASIGNACIÓNES', 'can' => ['Super-administrador', 'Control-escolar']],
         [
             'text'    => 'Asignación escolar',
             'icon'    => 'fas fa-fw fa-graduation-cap',
-            'can' => 'Super-administrador',
+            'can' => ['Super-administrador', 'Control-escolar'],
 
             'submenu' => [
                 [
@@ -326,12 +326,12 @@ return [
                 ],
             ],
         ],
-        ['header' => 'PERIODOS', 'can' => 'Super-administrador',],
+        ['header' => 'PERIODOS', 'can' => ['Super-administrador', 'Control-escolar']],
         [
             'text' => 'Permiso de evaluación',
             'route'  => 'admin.permissions.index',
             'icon' => 'fas fa-fw fa-clock',
-            'can' => 'Super-administrador',
+            'can' => ['Super-administrador', 'Control-escolar'],
         ],
         // [
         //     'text'        => 'Administración',
