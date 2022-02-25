@@ -251,10 +251,11 @@ return [
             'icon'        => 'fas fa-fw fa-edit',
             'can' => 'Docente',
         ],
-        ['header' => 'GESTIÓN DE USUARIOS'],
+        ['header' => 'GESTIÓN DE USUARIOS', 'can' => 'Super-administrador',],
         [
             'text'    => 'Control de usuarios',
             'icon'    => 'fas fa-fw fa-cogs',
+            'can' => 'Super-administrador',
             'submenu' => [
                 [
                     'text' => 'Directores',
@@ -278,11 +279,11 @@ return [
                 ],
             ],
         ],
-        ['header' => 'GESTIÓN ESCOLAR', 'can' => 'Administador'],
+        ['header' => 'GESTIÓN ESCOLAR', 'can' => 'Super-administrador'],
         [
             'text'    => 'Control escolar',
             'icon'    => 'fas fa-fw fa-graduation-cap',
-            'can' => 'Administador',
+            'can' => 'Super-administrador',
             'submenu' => [
                 [
                     'text' => 'Ciclo',
@@ -301,10 +302,12 @@ return [
                 ],
             ],
         ],
-        ['header' => 'ASIGNACIÓNES'],
+        ['header' => 'ASIGNACIÓNES', 'can' => 'Super-administrador',],
         [
             'text'    => 'Asignación escolar',
             'icon'    => 'fas fa-fw fa-graduation-cap',
+            'can' => 'Super-administrador',
+
             'submenu' => [
                 [
                     'text' => 'Docente a materia',
@@ -323,12 +326,12 @@ return [
                 ],
             ],
         ],
-        ['header' => 'PERIODOS', 'can' => 'Administador'],
+        ['header' => 'PERIODOS', 'can' => 'Super-administrador',],
         [
             'text' => 'Permiso de evaluación',
             'route'  => 'admin.permissions.index',
             'icon' => 'fas fa-fw fa-clock',
-            'can' => 'Administador',
+            'can' => 'Super-administrador',
         ],
         // [
         //     'text'        => 'Administración',
