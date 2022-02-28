@@ -279,7 +279,7 @@ return [
                 ],
             ],
         ],
-        ['header' => 'GESTIÓN ESCOLAR', ['Super-administrador', 'Control-escolar']],
+        ['header' => 'GESTIÓN ESCOLAR', 'can' => ['Super-administrador', 'Control-escolar']],
         [
             'text'    => 'Control escolar',
             'icon'    => 'fas fa-fw fa-graduation-cap',

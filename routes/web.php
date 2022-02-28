@@ -115,7 +115,7 @@ Route::resource('sistema/control/asignacion/alumnos/grupo', StudentGroupControll
 //Vistas asignació de calificaciones
 Route::resource('sistema/asignacion/evaluacion', EvaluationsController::class)->names('admin.evaluations')->middleware('auth');
 
-Route::post('sistema/asignacion/evaluacion/actualizacion', [EvaluationsController::class, 'actualizarRegistros'])->name('admin.evaluations.actualizar.registros')->middleware('auth');
+Route::post('sistema/asignacion/evaluacion/actualizacion', [EvaluationsController::class, 'actuEvaluaciones'])->name('admin.evaluations.actua.evaluacion')->middleware('auth');
 
 //Control de los permisos de evaluación
 Route::resource('sistema/control/permiso/evaluacion', permissionsController::class)->names('admin.permissions')->middleware('auth');
@@ -123,7 +123,3 @@ Route::resource('sistema/control/permiso/evaluacion', permissionsController::cla
 Route::put('sistema/control/permiso/evaluacion/suspendido/{id_permission}',[permissionsController::class,'statusA'])->name('permissions.status.suspendido')->middleware('auth');
 //Suspender los permisos
 Route::put('sistema/control/permiso/evaluacion/activo/{id_permission}',[permissionsController::class,'statusS'])->name('permissions.status.activo')->middleware('auth');
-
-/*Route::get('sistema/asignacion/calificaiones2', function () {
-    return view('calificaciones2');
-})->middleware('auth');*/
