@@ -58,6 +58,9 @@
                                         <div class="form-group inline-block">
                                             <input type="text" name="value[]" class="form-control" value="{{ $cal->value }}" required>
                                         </div>
+                                        <div class="form-group inline-block" style="display:none;">
+                                            <input type="text" name="id_grade[]" class="form-control" value="{{ $cal->id_grade }}">
+                                        </div>
                                         @endif
                                         @endforeach
                                 </td>

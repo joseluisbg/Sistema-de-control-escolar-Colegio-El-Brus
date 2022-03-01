@@ -182,7 +182,7 @@ class EvaluationsController extends Controller
             $valor = $request->input('id_student');
             $conteo = count($valor);
             for ($i = 0; $i < $conteo; $i++) {
-                $res = Ce_grades::find($request->input('id_student')[$i]);
+                $res = Ce_grades::findOrFail($request->input('id_grade')[$i]);
                 $res->id_student = $request->input('id_student')[$i];
                 $res->value = $request->input('value')[$i];
                 $res->id_teacher = $request->input('id_teacher');
@@ -195,6 +195,6 @@ class EvaluationsController extends Controller
                 $res->save();
             };
             return redirect()->route('admin.evaluations.index')->with('Registrar', 'ok');
-        }
+        } 
     }
 }
