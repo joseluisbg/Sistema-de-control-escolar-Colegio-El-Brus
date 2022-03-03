@@ -19,7 +19,7 @@ class SchoolControlIndex extends Component
 
     public function render()
     {
-        $teachers = User::role('Administrador')->where('name', 'LIKE', '%' .$this->search. '%')->paginate();
+        $teachers = User::role('Control-escolar')->where('name', 'LIKE', '%' .$this->search. '%')->paginate();
         return view('livewire.admin.school-control.school-control-index', compact('teachers'));
     }
 }

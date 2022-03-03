@@ -14,7 +14,7 @@
                     <h2>Asignación de alumnos a grupo</h2>
                     <form method="post" action="{{ route('admin.assignment.student.group.store') }}" class="form-registrar" autocomplete="off" id="my_form">
                         @csrf
-                    <table id="alumnos1" class="table table-striped text-center">
+                    <table id="alumnos1" class="table table-striped">
                         <thead>
                             <tr class="text-uppercase">
                                 <th>Listado de alumnos por asignar</th>
@@ -37,11 +37,10 @@
                                 </td>
                                 </tr>
                                 @endforeach
-
                             @endif
                         </tbody>
                     </table>
-                    <button type="submit" class="btn btn-primary btn-submit" form="my_form" id="btn-enviar">Asignar</button>
+                    <button type="submit" class="btn btn-primary btn-enviar" id="btn-enviar">Asignar</button>
                     </form>
                 </div>
             </div>
@@ -94,16 +93,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-    $('#alumnos1').DataTable({
-        'lengthMenu':[[5,10,50. -1], [5,10,50,"Todos"]],
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-        }
-    });
-} );
-</script>
+
 <script type="text/javascript">
     $(document).ready(function() {
     $('#alumnos2').DataTable({
@@ -114,42 +104,7 @@
     });
 } );
 </script>
-<!-- Rescatando los inputs seleccionados-->
-<script type="text/javascript">
-    var oTable;
-    $(document).ready(function() {
-        $('#my_form').submit( function() {
-            var sData = oTable.$('input').serialize();
-            alert( "Los insputs seleccionados: \n\n"+sData );
-            return false;
-        } );
-        oTable = $('#alumnos1').dataTable();
-    } );
-</script>
-<!-- Enviando los datos al controlador-->
-<script type="text/javascript">
-    $(".btn-submit").click(function(e){
-    e.preventDefault();
-    var codigo_promocion = $("input[name=codigo_promocion]").val();
-    var descuento = $("input[name=descuento]").val();
-    var descripcion = $("input[name=descripcion]").val();
-    $.ajax({
-        type:'PUT',
-        url:'/api/promociones/' + id_site_promocion ,
-        data: {
-            codigo_promocion: codigo_promocion,
-            descuento : descuento,
-            descripcion : descripcion,
-        },
-        success:function(data){
-            $('.btn-submit').prop('disabled', false);
-        },
-        error:function (data) {
-            $('.btn-submit').prop('disabled', false);
-        }
-    });
-    });
-</script>
+
 <script type="text/javascript">
   $('.form-suspender').submit(function(e){
     e.preventDefault();
@@ -168,7 +123,7 @@
   });
 </script>
 <script type="text/javascript">
-  $('.form-registrar').submit(function(e){
+  $('.form-registra').submit(function(e){
     e.preventDefault();
     Swal.fire({
     title: '¿Desea asignar los alumnos al grupo?',

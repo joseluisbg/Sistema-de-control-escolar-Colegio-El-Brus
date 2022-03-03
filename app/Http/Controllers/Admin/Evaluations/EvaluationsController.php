@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Evaluations;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ce_average;
 use App\Models\Ce_course;
 use App\Models\Ce_cycle;
 use App\Models\Ce_grades;
@@ -62,17 +63,14 @@ class EvaluationsController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request;
         if ($request) {
-            //$id_students = $request->input('id_student');
-            //$values = $request->input('value');
+            $studentEval= $request->input('id_studentU');
+            $conteoStudent = count($studentEval);
             $user = auth()->user()->id;
             $valor = $request->input('id_student');
             $conteo = count($valor);
             for ($i = 0; $i < $conteo; $i++) {
                 $res = new Ce_grades();
-                //$id=$request->input('id_student');
-                //$cal=$request->input('value');
                 $res->id_student = $request->input('id_student')[$i];
                 $res->value = $request->input('value')[$i];
                 $res->id_teacher = $request->input('id_teacher');
@@ -82,16 +80,23 @@ class EvaluationsController extends Controller
                 $res->id_rc = $request->input('id_rc')[$i];
                 $res->status = "Activo";
                 $res->user_modification = $user;
-                //$res="Calificación: ".$cal." Id del estudiante: ".$id;
                 $res->save();
-                //return array($res);
             };
-            return redirect()->route('admin.evaluations.index')->with('Registrar', 'ok');
-            // return redirect()->route('admin.evaluations.index')->with('Registrar', 'ok');
-            // return array($res);
+
+            for ($i = 0; $i < $conteoStudent; $i++) {
+                $aver = new Ce_average();
+                $aver->id_student = $request->input('id_studentU')[$i];
+                $aver->value = $request->input('promedio')[$i];
+                $aver->id_teacher = $request->input('id_teacher');
+                $aver->id_course = $request->input('id_course');
+                $aver->id_cycle = $request->input('id_cycle');
+                $aver->id_period = $request->input('id_period');
+                $aver->status = "Activo";
+                $aver->user_modification = $user;
+                $aver->save();
+            };
+            return redirect()->back()->with('Registrar', 'ok');
         }
-        //$res="Calificación: ".$request['value'][2]." Id del estudiante: ".$request['id_student'][2];
-        //return $res;
     }
 
     /**
@@ -143,10 +148,12 @@ class EvaluationsController extends Controller
             ->where('LGCT.id_lgct', '=', $id_lgct)->first();
         $teacher = auth()->user()->id;
         $calificaciones = Ce_grades::where('id_course', '=', $course->id_course)->get();
+        $promedios = Ce_average::where('id_course', '=', $course->id_course)->get();
       
         return view('system/admin/evaluations/create', compact([
             'levelinfo', 'teacher', 'course', 'cycle', 'permission1',
-            'permission2', 'permission3', 'periodo1', 'periodo2', 'periodo3', 'rubros', 'studentEval', 'conteo', 'calificaciones'
+            'permission2', 'permission3', 'periodo1', 'periodo2', 'periodo3', 'rubros', 'studentEval', 'conteo',
+            'calificaciones', 'promedios'
         ]));
        // return $studentEval;
     }
@@ -178,6 +185,8 @@ class EvaluationsController extends Controller
     {
          //return $request;
         if ($request) {
+            $studentEval= $request->input('id_studentU');
+            $conteoStudent = count($studentEval);
             $user = auth()->user()->id;
             $valor = $request->input('id_student');
             $conteo = count($valor);
@@ -194,7 +203,20 @@ class EvaluationsController extends Controller
                 $res->user_modification = $user;
                 $res->save();
             };
-            return redirect()->route('admin.evaluations.index')->with('Registrar', 'ok');
+
+            for ($i = 0; $i < $conteoStudent; $i++) {
+                $aver = Ce_average::findOrFail($request->input('id_average')[$i]);
+                $aver->id_student = $request->input('id_studentU')[$i];
+                $aver->value = $request->input('promedio')[$i];
+                $aver->id_teacher = $request->input('id_teacher');
+                $aver->id_course = $request->input('id_course');
+                $aver->id_cycle = $request->input('id_cycle');
+                $aver->id_period = $request->input('id_period');
+                $aver->status = "Activo";
+                $aver->user_modification = $user;
+                $aver->save();
+            };
+            return redirect()->back()->with('Registrar', 'ok');
         } 
     }
 }

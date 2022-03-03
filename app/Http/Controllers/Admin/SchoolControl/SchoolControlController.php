@@ -21,8 +21,8 @@ class SchoolControlController extends Controller
      */
     public function index()
     {
-        $activos = User::role('Administrador')->where('status', 'Activo')->count();
-        $suspendidos = User::role('Administrador')->where('status', 'Suspendido')->count();
+        $activos = User::role('Control-escolar')->where('status', 'Activo')->count();
+        $suspendidos = User::role('Control-escolar')->where('status', 'Suspendido')->count();
         return view('system/admin/schoolcontrol/index', compact(['activos', 'suspendidos']));
     }
 
@@ -57,7 +57,7 @@ class SchoolControlController extends Controller
             $teacher->password = Hash::make($request['password']);
             $teacher->user_modification = $user;
             $teacher->status = 'Activo';
-            $teacher->assignRole('Administrador');
+            $teacher->assignRole('Control-escolar');
             $teacher->save();
             return redirect()->route('admin.school.control.index')->with('Registrar', 'ok');
         }
@@ -107,7 +107,7 @@ class SchoolControlController extends Controller
             $teacher->email = $request->input('email');
             $teacher->password = Hash::make($request['password']);
             $teacher->user_modification = $user;
-            $teacher->assignRole('Administrador');
+            $teacher->assignRole('Control-escolar');
             $teacher->save();
             return redirect()->route('admin.school.control.index')->with('Actualizar', 'ok');
         }
