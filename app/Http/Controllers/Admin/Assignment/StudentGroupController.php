@@ -91,8 +91,8 @@ class StudentGroupController extends Controller
         ->join('ce_group as G', 'ce_level_groups.id_group', '=', 'G.id_group')
         ->where('ce_level_groups.id_lg', '=', $lg)->get('L.id_area');
         $area=$area[0]["id_area"];
-        $students = Ce_student::join('ce_user_enrolment as UE', 'ce_student.id_student', '<>', 'UE.id_user')->where('id_area', $area)->where('status','Activo')->get();
-        //$students = Ce_student::where('id_area', $area)->where('status','Activo')->get();
+        //$students = Ce_student::join('ce_user_enrolment as UE', 'ce_student.id_student', '<>', 'UE.id_user')->where('id_area', $area)->where('status','Activo')->get();
+        $students = Ce_student::where('id_area', $area)->where('status','Activo')->get();
 
         $alumasign=Ce_user_enrolment::join('ce_student as S', 'ce_user_enrolment.id_user', '=', 'S.id_student')
         ->join('ce_level_groups as LG', 'ce_user_enrolment.id_lg', '=', 'LG.id_lg')

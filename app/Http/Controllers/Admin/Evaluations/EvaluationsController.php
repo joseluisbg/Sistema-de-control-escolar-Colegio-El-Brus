@@ -15,6 +15,8 @@ use App\Models\Ce_student;
 use App\Models\Ce_user_enrolment;
 use App\Models\ce_rubro_course;
 use Illuminate\Http\Request;
+use App\Exports\BoletasExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EvaluationsController extends Controller
 {
@@ -218,5 +220,9 @@ class EvaluationsController extends Controller
             };
             return redirect()->back()->with('Registrar', 'ok');
         } 
+    }
+    public function exportarBoleta()
+    {
+        return Excel::download(new BoletasExport, 'boleta.xlsx');
     }
 }

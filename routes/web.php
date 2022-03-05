@@ -112,7 +112,7 @@ Route::resource('sistema/control/asignacion/materia/grupo', LevelCoursesControll
 //Crud Asignación de alumnos a grupo
 Route::resource('sistema/control/asignacion/alumnos/grupo', StudentGroupController::class)->names('admin.assignment.student.group')->middleware('auth');
 
-//Vistas asignació de calificaciones
+//Vistas asignación de calificaciones
 Route::resource('sistema/asignacion/evaluacion', EvaluationsController::class)->names('admin.evaluations')->middleware('auth');
 
 Route::post('sistema/asignacion/evaluacion/actualizacion', [EvaluationsController::class, 'actuEvaluaciones'])->name('admin.evaluations.actua.evaluacion')->middleware('auth');
@@ -123,3 +123,5 @@ Route::resource('sistema/control/permiso/evaluacion', permissionsController::cla
 Route::put('sistema/control/permiso/evaluacion/suspendido/{id_permission}',[permissionsController::class,'statusA'])->name('permissions.status.suspendido')->middleware('auth');
 //Suspender los permisos
 Route::put('sistema/control/permiso/evaluacion/activo/{id_permission}',[permissionsController::class,'statusS'])->name('permissions.status.activo')->middleware('auth');
+//Exportar boleta
+Route::get('sistema/exportacion/boleta',[EvaluationsController::class,'exportarBoleta'])->name('boletas.export')->middleware('auth');

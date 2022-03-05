@@ -21,6 +21,7 @@
                                 <th>Grado</th>
                                 <th>Materia</th>
                                 <th>Ver</th>
+                                <th>Obtener Boleta</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +33,11 @@
                                 <td width="10px">
                                     <a href="{{ route('admin.evaluations.edit',  $grupo->id_lgct) }}" class="btn btn-primary">
                                         <span class="fas fa-sign-in-alt"></span>
+                                    </a>
+                                </td>
+                                <td width="10px">
+                                    <a href="{{ route('boletas.export') }}" class="btn btn-success">
+                                        <span class="fas fa-file-excel"></span>
                                     </a>
                                 </td>
                             </tr>
