@@ -17,6 +17,7 @@ use App\Models\Ce_course;
             <th>Nombre</th>
             <th>Registro SEP</th>
             <th>Nombre SEP</th>
+            <th>Área</th>
             <th>Asignar</th>
           </tr>
         </thead>
@@ -30,6 +31,17 @@ use App\Models\Ce_course;
             <td>No</td>
             @endif
             <td>{{ $course->nick_sep }}</td>
+            @switch($course->id_area)
+            @case(1)
+            <td>Preescolar</td>
+            @break
+            @case(2)
+            <td>Primaria</td>
+            @break
+            @case(3)
+            <td>Secundaria</td>
+            @break
+            @endswitch
             <td width="10px">
               <!-- Button trigger modal -->
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pop{{ $course->id_course }}">

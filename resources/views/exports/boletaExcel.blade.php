@@ -14,11 +14,14 @@
             <td class="column22 style27 s style29" colspan="3"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">GRUPO</span></td>
             <td class="column25 style26 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">SECCIÓN</span></td>
         </tr>
+
         <tr class="row1">
-            <td class="column11 style30 s style32" colspan="8"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">VICTORIA NAVARRO LEÓN</span></td>
-            <td class="column19 style34 n style36" colspan="3">1688</td>
-            <td class="column22 style37 s style39" colspan="3"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">ROJO</span></td>
-            <td class="column25 style40 s"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">PRIMARIA</span></td>
+
+            <td class="column11 style30 s style32" colspan="8"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{$info[0]->Nombre}}</span></td>
+            <td class="column19 style34 n style36" colspan="3">{{$info[0]->Matricula}}</td>
+            <td class="column22 style37 s style39" colspan="3"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{$info[0]->Grupo}}</span></td>
+            <td class="column25 style40 s"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{$info[0]->Area}}</span></td>
+
         </tr>
         <tr class="row2">
             <td class="column8 style20 s style22" colspan="5"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">GRADO</span></td>
@@ -28,11 +31,11 @@
             <td class="column23 style27 s style29" colspan="3"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">CURSO ESCOLAR</span></td>
         </tr>
         <tr class="row3">
-            <td class="column8 style44 s style46" colspan="5"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">SEGUNDO</span></td>
-            <td class="column13 style37 s style39" colspan="4"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">ROJO</span></td>
+            <td class="column8 style44 s style46" colspan="5"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{$info[0]->Grado}}</span></td>
+            <td class="column13 style37 s style39" colspan="4"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{$info[0]->Grupo}}</span></td>
             <td class="column17 style37 s style39" colspan="3"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">Periodo 1</span></td>
-            <td class="column20 style47 n style49" colspan="3">11-01-2022</td>
-            <td class="column23 style44 s style46" colspan="3"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">2021 - 2022</span></td>
+            <td class="column20 style47 n style49" colspan="3">{{date("d-m-y")}}</td>
+            <td class="column23 style44 s style46" colspan="3"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{$info[0]->Ciclo}}</span></td>
         </tr>
         <tr class="row4">
             <td class="column0 style26 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">RESULTADOS EVALUACIÓN</span></td>
@@ -46,9 +49,14 @@
         </tr>
         <tr class="row5">
             <td class="column0 style19 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">MATERIAS</span></td>
-            <td class="column1 style64 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Evidencias de Aprendizaje</span></td>
-            <td class="column2 style65 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Proyecto</span></td>
-            <td class="column3 style65 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Calificación</span></td>
+            <!-- @foreach($info as $inf)
+            @if($inf->rcurso==1)
+            <td class="column1 style64 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">{{$inf->Rubro}}</span></td>
+            @endif
+            @endforeach -->
+            <td class="column4 style64 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Evidencias de Aprendizaje</span></td>
+            <td class="column5 style66 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Proyecto</span></td>
+            <td class="column6 style67 s style69" colspan="3"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Calificación</span></td>
             <td class="column4 style64 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Evidencias de Aprendizaje</span></td>
             <td class="column5 style66 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Proyecto</span></td>
             <td class="column6 style67 s style69" colspan="3"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Calificación</span></td>
