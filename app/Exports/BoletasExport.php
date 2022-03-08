@@ -10,12 +10,12 @@ use Maatwebsite\Excel\Concerns\WithDrawings;
 use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 
 //class BoletasExport implements FromView,WithDrawings
-class BoletasExport implements FromView
+class BoletasExport implements FromView, WithDrawings
 {
     public function view(): View
     {
         return view('exports.boletaExcel', [
-            'calificaciones' => Ce_grades::all()
+            'calificaciones' => Ce_grades::all(),
         ]);
     }
     public function drawings()

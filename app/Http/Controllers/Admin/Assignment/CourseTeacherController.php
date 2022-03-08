@@ -23,7 +23,6 @@ class CourseTeacherController extends Controller
         $materias = DB::table('ce_course')->get();
         //return $materias;
         return view('system/admin/assignment/course-teacher/index', compact(['materias']));
-
     }
 
     /**
@@ -46,16 +45,23 @@ class CourseTeacherController extends Controller
     {
         $id_course = $request->input('id_course');
         $id_user = $request->input('id_user');
-        $registros = Ce_course_teacher::where('id_course', '=', $id_course)->where('id_user', '=', $id_user)->get();
+        $registros = Ce_course_teacher::where('id_course', '=', $id_course)
+            ->where('id_user', '=', $id_user)
+            ->get();
         if ($registros->isEmpty()) {
             $teacher = new Ce_course_teacher();
             $teacher->id_course = $request->input('id_course');
             $teacher->id_user = $request->input('id_user');
             $teacher->status = 'Activo';
             $teacher->save();
-            return redirect()->route('admin.assignment.course.teacher.index')->with('Asignado', 'ok');
-        }else
-        return redirect()->route('admin.assignment.course.teacher.index')->with('Existe', 'ok');
+            return redirect()
+                ->route('admin.assignment.course.teacher.index')
+                ->with('Asignado', 'ok');
+        } else {
+            return redirect()
+                ->route('admin.assignment.course.teacher.index')
+                ->with('Existe', 'ok');
+        }
     }
 
     /**

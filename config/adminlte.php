@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Title
@@ -227,101 +226,112 @@ return [
     'menu' => [
         //Menu top items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
+            'type' => 'navbar-search',
+            'text' => 'search',
             'topnav_right' => false,
         ],
 
         [
-            'type'         => 'fullscreen-widget',
+            'type' => 'fullscreen-widget',
             'topnav_right' => false,
         ],
 
         //Sidebar items:
         ['header' => 'PANEL PRINCIPAL'],
         [
-            'text'        => 'Escritorio',
-            'url'         => 'escritorio',
-            'icon'        => 'fas fa-fw fa-chalkboard',
+            'text' => 'Escritorio',
+            'url' => 'escritorio',
+            'icon' => 'fas fa-fw fa-chalkboard',
         ],
         ['header' => 'CALIFICACIÓNES', 'can' => 'Docente'],
         [
-            'text'        => 'Asignar calificación',
-            'route'         => 'admin.evaluations.index',
-            'icon'        => 'fas fa-fw fa-edit',
+            'text' => 'Asignar calificación',
+            'route' => 'admin.evaluations.index',
+            'icon' => 'fas fa-fw fa-edit',
+            'can' => 'Docente',
+        ],
+        [
+            'text' => 'Grupo Tutorado',
+            'route' => 'admin.teacher.tutor.boleta.index',
+            'icon' => 'fas fa-fw fa-edit',
             'can' => 'Docente',
         ],
         ['header' => 'GESTIÓN DE USUARIOS', 'can' => ['Super-administrador', 'Control-escolar']],
         [
-            'text'    => 'Control de usuarios',
-            'icon'    => 'fas fa-fw fa-cogs',
+            'text' => 'Control de usuarios',
+            'icon' => 'fas fa-fw fa-cogs',
             'can' => ['Super-administrador', 'Control-escolar'],
             'submenu' => [
                 [
                     'text' => 'Directores',
-                    'route'  => 'admin.director.index',
+                    'route' => 'admin.director.index',
                     'icon' => 'fas fa-fw fa-user-tie',
                 ],
                 [
                     'text' => 'Administadores',
-                    'route'  => 'admin.school.control.index',
+                    'route' => 'admin.school.control.index',
                     'icon' => 'fas fa-fw fa-user-shield',
                 ],
                 [
                     'text' => 'Docentes',
-                    'route'  => 'admin.teacher.index',
-                    'icon'  => 'fas fa-fw fa-chalkboard-teacher',
+                    'route' => 'admin.teacher.index',
+                    'icon' => 'fas fa-fw fa-chalkboard-teacher',
                 ],
                 [
                     'text' => 'Alumnos',
-                    'url'  => 'sistema/control/alumnos',
-                    'icon'  => 'fas fa-fw fa-user-friends',
+                    'url' => 'sistema/control/alumnos',
+                    'icon' => 'fas fa-fw fa-user-friends',
                 ],
             ],
         ],
         ['header' => 'GESTIÓN ESCOLAR', 'can' => ['Super-administrador', 'Control-escolar']],
         [
-            'text'    => 'Control escolar',
-            'icon'    => 'fas fa-fw fa-graduation-cap',
+            'text' => 'Control escolar',
+            'icon' => 'fas fa-fw fa-graduation-cap',
             'can' => ['Super-administrador', 'Control-escolar'],
             'submenu' => [
                 [
                     'text' => 'Ciclo',
-                    'route'  => 'admin.cycle.index',
+                    'route' => 'admin.cycle.index',
                     'icon' => 'fas fa-fw fa-clock',
                 ],
                 [
                     'text' => 'Grados',
-                    'route'  => 'admin.level.index',
+                    'route' => 'admin.level.index',
                     'icon' => 'fas fa-fw fa-layer-group',
                 ],
                 [
                     'text' => 'Materias',
-                    'route'  => 'admin.course.index',
+                    'route' => 'admin.course.index',
                     'icon' => 'fas fa-fw fa-book',
                 ],
             ],
         ],
         ['header' => 'ASIGNACIÓNES', 'can' => ['Super-administrador', 'Control-escolar']],
         [
-            'text'    => 'Asignación escolar',
-            'icon'    => 'fas fa-fw fa-graduation-cap',
+            'text' => 'Asignación escolar',
+            'icon' => 'fas fa-fw fa-graduation-cap',
             'can' => ['Super-administrador', 'Control-escolar'],
 
             'submenu' => [
                 [
                     'text' => 'Docente a materia',
-                    'route'  => 'admin.assignment.course.teacher.index',
+                    'route' => 'admin.assignment.course.teacher.index',
                     'icon' => 'fas fa-fw fa-user',
                 ],
                 [
                     'text' => 'Materia a Grupo',
-                    'route'  => 'admin.assignment.level.course.index',
+                    'route' => 'admin.assignment.level.course.index',
                     'icon' => 'fas fa-fw fa-book',
                 ],
                 [
                     'text' => 'Alumnos a grupo',
-                    'route'  => 'admin.assignment.student.group.index',
+                    'route' => 'admin.assignment.student.group.index',
+                    'icon' => 'fas fa-fw fa-swatchbook',
+                ],
+                [
+                    'text' => 'Tutor de grupo',
+                    'route' => 'admin.assignment.tutor.group.index',
                     'icon' => 'fas fa-fw fa-swatchbook',
                 ],
             ],
@@ -329,7 +339,7 @@ return [
         ['header' => 'PERIODOS', 'can' => ['Super-administrador', 'Control-escolar']],
         [
             'text' => 'Permiso de evaluación',
-            'route'  => 'admin.permissions.index',
+            'route' => 'admin.permissions.index',
             'icon' => 'fas fa-fw fa-clock',
             'can' => ['Super-administrador', 'Control-escolar'],
         ],
@@ -340,7 +350,7 @@ return [
         //     'label_color' => 'success',
         //     'can'     => 'Docente',
         // ],
-/*
+        /*
         [
                     'text' => 'Grupos',
                     'route'  => 'admin.group.index',
@@ -483,15 +493,7 @@ return [
     |
     */
 
-    'filters' => [
-        JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
-    ],
+    'filters' => [JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class],
 
     /*
     |--------------------------------------------------------------------------

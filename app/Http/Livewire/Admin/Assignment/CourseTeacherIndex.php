@@ -15,15 +15,20 @@ class CourseTeacherIndex extends Component
 
     protected $paginationTheme = 'bootstrap';
     public $search;
-    public function updatingSearch(){
+    public function updatingSearch()
+    {
         $this->resetPage();
     }
 
     public function render()
     {
-        $courses = Ce_course::where('name', 'LIKE', '%' .$this->search. '%')->orWhere('rep_sep', 'LIKE', '%' .$this->search. '%')->paginate();
-        $teachers = User::role('Docente')->where('status', 'Activo')->get();
-        $coTeacher= Ce_course_teacher::where('status', 'Activo')->get();
-        return view('livewire.admin.assignment.course-teacher-index', compact(['courses', 'teachers','coTeacher']));
+        $courses = Ce_course::where('name', 'LIKE', '%' . $this->search . '%')
+            ->orWhere('rep_sep', 'LIKE', '%' . $this->search . '%')
+            ->paginate();
+        $teachers = User::role('Docente')
+            ->where('status', 'Activo')
+            ->get();
+        $coTeacher = Ce_course_teacher::where('status', 'Activo')->get();
+        return view('livewire.admin.assignment.course-teacher-index', compact(['courses', 'teachers', 'coTeacher']));
     }
 }
