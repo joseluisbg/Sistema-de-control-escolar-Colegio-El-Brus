@@ -90,15 +90,7 @@ $periodo3 = Ce_average::select('*')
             <td class="column6 style67 s style69"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">{{$rubros->Rubro}}</span></td>
             @endforeach
             <td class="column6 style67 s style69"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Calificación</span></td>
-            <!-- <td class="column4 style64 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Evidencias de Aprendizaje</span></td>
-            <td class="column5 style66 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Proyecto</span></td>
-            <td class="column6 style67 s style69" colspan="3"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Calificación</span></td>
-            <td class="column4 style64 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Evidencias de Aprendizaje</span></td>
-            <td class="column5 style66 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Proyecto</span></td>
-            <td class="column6 style67 s style69" colspan="3"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Calificación</span></td>
-            <td class="column9 style64 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Evidencias de Aprendizaje</span></td>
-            <td class="column10 style70 s style71" colspan="2"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Proyecto</span></td>
-            <td class="column12 style67 s style69" colspan="2"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:5.5pt">Calificación</span></td> -->
+           
             <td class="column16 style20 s style22" colspan="2"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">1er</span></td>
             <td class="column18 style20 s style22" colspan="3"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">2do</span></td>
             <td class="column21 style20 s style22" colspan="3"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">3er</span></td>
