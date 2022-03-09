@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 use App\Exports\BoletasExport;
 use Maatwebsite\Excel\Facades\Excel;
 
-
 class BoletaController extends Controller
 {
     /**
@@ -115,8 +114,8 @@ class BoletaController extends Controller
 
     public function exportarBoleta($id_student)
     {
-       // return $id_student;
-       // return Excel::download(new BoletasExport(), 'boleta.xlsx');
+        // return $id_student;
+        // return Excel::download(new BoletasExport(), 'boleta.xlsx');
         //return (new InvoicesExport(2018))->download('invoices.xlsx');
         return Excel::download(new BoletasExport($id_student), 'boleta.xlsx');
     }
