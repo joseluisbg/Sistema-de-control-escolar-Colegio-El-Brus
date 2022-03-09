@@ -33,7 +33,8 @@ class BoletasExport implements FromView
                 ->join('ce_area as A', 'L.id_area', '=', 'A.id_area')
                 ->join('ce_rubro_course AS RC', 'ce_grades.id_rc', '=', 'RC.id_rc')
                 ->join('ce_course AS C', 'RC.id_course', '=', 'C.id_course')
-                ->select('S.name AS Nombre', 'S.matricula AS Matricula', 'A.name AS Area', 'G.name AS Grupo', 'L.name AS Grado', 'L.cycle AS Ciclo','RC.rubro as Rubro')
+                ->select('S.name AS Nombre', 'S.matricula AS Matricula', 'A.name AS Area', 'G.name AS Grupo', 'L.name AS Grado',
+                 'L.cycle AS Ciclo','RC.rubro as Rubro','ce_grades.id_student as idEst')
                 ->distinct()
                 ->where("ce_grades.id_student", '=', $id_student)->get()],
             // ['infoR' => Ce_grades::join('ce_student as S', 'ce_grades.id_student', '=', 'S.id_student')
