@@ -154,7 +154,7 @@ class CourseController extends Controller
             $rubro->status = 'Activo';
             $rubro->save();
             return redirect()
-                ->route('admin.course.index')
+                ->back()
                 ->with('Registrar-rubro', 'ok');
         }
     }

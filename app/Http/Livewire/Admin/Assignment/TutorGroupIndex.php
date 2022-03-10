@@ -22,6 +22,7 @@ class TutorGroupIndex extends Component
     {
         $grupos = Ce_level_groups::join('ce_level as L', 'ce_level_groups.id_level', '=', 'L.id_level')
             ->join('ce_group as G', 'ce_level_groups.id_group', '=', 'G.id_group')
+            ->where('G.name', 'LIKE', '%' . $this->search . '%')
             ->select('ce_level_groups.id_lg AS idlg', 'L.name AS nomL', 'G.name AS nomG', 'L.id_area AS area')
             ->paginate();
         $teachers = User::role('Docente')

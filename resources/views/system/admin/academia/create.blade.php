@@ -23,15 +23,14 @@
                                 </thead>
                                 <tbody>
                                     @if ($students->count())
-
+                                        <tr><input type="text" name="id_academy" value="{{ $id_academy }}"
+                                                style="display: none"></tr>
                                         @foreach ($students as $student)
                                             <tr>
                                                 <td>
                                                     <div class="form-check">
-                                                        <input type="checkbox" name="id_academy"
-                                                            value="{{ $student->idAcademy }}">
-                                                        <input type="text" name="id_course[]"
-                                                            value="{{ $student->idCourse }}" style="display: none">
+                                                        <input type="checkbox" name="id_course[]"
+                                                            value="{{ $student->idCourse }}">
                                                         <label class="form-check-label" for="exampleRadios1">
                                                             {{ $student->name }}
                                                         </label>

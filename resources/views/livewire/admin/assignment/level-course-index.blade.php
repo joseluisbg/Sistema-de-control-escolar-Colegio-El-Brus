@@ -2,7 +2,7 @@
     <div class="card mb-5">
         <div class="card-header">
             <p class="text-uppercase font-weight-bold">Buscador de materias</p>
-            <input wire:model="search" class="form-control" placeholder="Ingrese el nombre de la materia o nombre sep">
+            <input wire:model="search" class="form-control" placeholder="Ingrese el nombre de la materia">
         </div>
         @if ($ct->count())
             <div class="card-body">
@@ -119,7 +119,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-
                     </div>
                 @else
                     <div class="card-body p-3">

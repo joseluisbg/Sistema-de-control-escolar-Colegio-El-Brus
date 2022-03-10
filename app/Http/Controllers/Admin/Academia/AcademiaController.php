@@ -68,13 +68,14 @@ class AcademiaController extends Controller
      */
     public function edit($id_academy)
     {
-        $area = Ce_academy::where('id_academy', '=', $id_academy)->get();
-        $area = $area[0]['id_area'];
+        $id_area = Ce_academy::where('id_academy', '=', $id_academy)->get();
+        $id_area = $id_area[0]['id_area'];
         $students = Ce_academy::join('ce_course as A', 'ce_academy.id_area', '=', 'A.id_area')
-            ->where('A.id_area', '=', $area)
+            ->where('A.id_area', '=', $id_area)
+            ->distinct('A.id_area')
             ->select('id_course as idCourse', 'A.id_course as idAcademy', 'A.name as name')
             ->get();
-        return view('system/admin/academia/create', compact(['students']));
+        return view('system/admin/academia/create', compact(['students', 'id_academy']));
     }
 
     /**
@@ -102,17 +103,19 @@ class AcademiaController extends Controller
 
     public function guardarAsignacion(Request $request)
     {
+        //return $request;
+
+        /*
         if ($request) {
-            $dato2 = $request->input('id_course');
+            return $dato2 = $request->input('id_course');
             foreach ($dato2 as $dato) {
                 $lg = new Ce_academy_course();
                 $lg->id_academy = $request->input('id_academy');
                 $lg->id_course = $dato;
                 $lg->save();
             }
-            return redirect()
-                ->route('admin.academia.index')
-                ->with('Registrard', 'ok');
-        }
+
+            return redirect()->route('admin.academia.index')->with('Registrard', 'ok');
+        }*/
     }
 }

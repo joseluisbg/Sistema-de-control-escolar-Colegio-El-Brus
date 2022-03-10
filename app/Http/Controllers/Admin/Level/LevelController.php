@@ -53,7 +53,9 @@ class LevelController extends Controller
             $level->user_modification = $user;
             $level->status = 'Activo';
             $level->save();
-            return redirect()->route('admin.level.index')->with('Registrar', 'ok');
+            return redirect()
+                ->route('admin.level.index')
+                ->with('Registrar', 'ok');
         }
     }
 
@@ -100,7 +102,9 @@ class LevelController extends Controller
             $level->cycle = $request->input('cycle');
             $level->user_modification = $user;
             $level->save();
-            return redirect()->route('admin.level.index')->with('Actualizar', 'ok');
+            return redirect()
+                ->route('admin.level.index')
+                ->with('Actualizar', 'ok');
         }
     }
 
@@ -118,16 +122,20 @@ class LevelController extends Controller
     public function statusA(Request $request, $id)
     {
         $student = Ce_level::where('id_level', $id)->firstOrFail();
-            $student->status = "Suspendido";
-            $student->update();
-            return redirect()->route('admin.level.index')->with('Suspendido', 'ok');
+        $student->status = 'Suspendido';
+        $student->update();
+        return redirect()
+            ->route('admin.level.index')
+            ->with('Suspendido', 'ok');
     }
 
     public function statusS(Request $request, $id)
     {
         $student = Ce_level::where('id_level', $id)->firstOrFail();
-            $student->status = "Activo";
-            $student->update();
-            return redirect()->route('admin.level.index')->with('Activo', 'ok');
+        $student->status = 'Activo';
+        $student->update();
+        return redirect()
+            ->route('admin.level.index')
+            ->with('Activo', 'ok');
     }
 }
