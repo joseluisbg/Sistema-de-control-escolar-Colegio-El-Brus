@@ -91,6 +91,16 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="col-12">
+                                    <label>Academia:</label>
+                                    <select class="form-control" name="id_section" required>
+                                        <option selected disabled value="">Seleccionar</option>
+                                        @foreach ($sections as $section)
+                                            <option value="{{ $section->id_section }}">
+                                                {{ $section->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             <button type="submit"
                                 class="btn btn-outline-primary btn-block mt-3 text-uppercase">Registrar</button>

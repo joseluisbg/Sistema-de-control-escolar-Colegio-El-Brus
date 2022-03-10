@@ -343,6 +343,13 @@ return [
             'icon' => 'fas fa-fw fa-clock',
             'can' => ['Super-administrador', 'Control-escolar'],
         ],
+        ['header' => 'GESTIÓN DE ACADEMIAS', 'can' => ['Super-administrador', 'Control-escolar']],
+        [
+            'text' => 'Academias',
+            'route' => 'admin.academia.index',
+            'icon' => 'fas fa-fw fa-clock',
+            'can' => ['Super-administrador', 'Control-escolar'],
+        ],
         // [
         //     'text'        => 'Administración',
         //     'url'         => 'panel/usuario/administracion',

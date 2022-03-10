@@ -7,6 +7,8 @@ use App\Models\Ce_area;
 use App\Models\Ce_course;
 use App\Models\Ce_cycle;
 use App\Models\ce_rubro_course;
+use App\Models\ce_section;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -22,7 +24,8 @@ class CourseController extends Controller
         $suspendidos = Ce_course::where('status', 'Suspendido')->count();
         $cycles = Ce_cycle::where('status', 'Activo')->get();
         $areas = Ce_area::where('status', 'Activo')->get();
-        return view('system/admin/course/index', compact(['activos', 'suspendidos', 'cycles', 'areas']));
+        $sections = DB::table('ce_section')->get();
+        return view('system/admin/course/index', compact(['activos', 'suspendidos', 'cycles', 'areas', 'sections']));
     }
 
     /**
@@ -43,7 +46,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-         if ($request) {
+        if ($request) {
             $user = auth()->user()->id;
             $course = new Ce_course();
             $course->name = $request->input('name');
@@ -52,10 +55,13 @@ class CourseController extends Controller
             $course->nick_sep = $request->input('nick_sep');
             $course->cycle = $request->input('cycle');
             $course->id_area = $request->input('id_area');
+            $course->id_section = $request->input('id_section');
             $course->user_modification = $user;
             $course->status = 'Activo';
             $course->save();
-            return redirect()->route('admin.course.index')->with('Registrar', 'ok');
+            return redirect()
+                ->route('admin.course.index')
+                ->with('Registrar', 'ok');
         }
     }
 
@@ -102,7 +108,9 @@ class CourseController extends Controller
             $course->cycle = $request->input('cycle');
             $course->user_modification = $user;
             $course->save();
-            return redirect()->route('admin.course.index')->with('Actualizar', 'ok');
+            return redirect()
+                ->route('admin.course.index')
+                ->with('Actualizar', 'ok');
         }
     }
 
@@ -120,19 +128,24 @@ class CourseController extends Controller
     public function statusA(Request $request, $id)
     {
         $student = Ce_course::where('id_course', $id)->firstOrFail();
-            $student->status = "Suspendido";
-            $student->update();
-            return redirect()->route('admin.course.index')->with('Suspendido', 'ok');
+        $student->status = 'Suspendido';
+        $student->update();
+        return redirect()
+            ->route('admin.course.index')
+            ->with('Suspendido', 'ok');
     }
 
     public function statusS(Request $request, $id)
     {
         $student = Ce_course::where('id_course', $id)->firstOrFail();
-            $student->status = "Activo";
-            $student->update();
-            return redirect()->route('admin.course.index')->with('Activo', 'ok');
+        $student->status = 'Activo';
+        $student->update();
+        return redirect()
+            ->route('admin.course.index')
+            ->with('Activo', 'ok');
     }
-    public function registroRurbo(Request $request){
+    public function registroRurbo(Request $request)
+    {
         if ($request) {
             $rubro = new ce_rubro_course();
             $rubro->rubro = $request->input('rubro');
@@ -140,7 +153,9 @@ class CourseController extends Controller
             $rubro->id_course = $request->input('id_course');
             $rubro->status = 'Activo';
             $rubro->save();
-            return redirect()->route('admin.course.index')->with('Registrar-rubro', 'ok');
+            return redirect()
+                ->route('admin.course.index')
+                ->with('Registrar-rubro', 'ok');
         }
     }
 }

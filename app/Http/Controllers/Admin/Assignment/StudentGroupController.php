@@ -21,16 +21,19 @@ class StudentGroupController extends Controller
     {
         $preescolar = Ce_level_groups::join('ce_level as L', 'ce_level_groups.id_level', '=', 'L.id_level')
             ->join('ce_group as G', 'ce_level_groups.id_group', '=', 'G.id_group')
-            ->select('ce_level_groups.id_lg AS idlg','L.name AS nomL','G.name AS nomG','L.id_area AS area')
-            ->where('L.id_area', '=', 1)->get();
+            ->select('ce_level_groups.id_lg AS idlg', 'L.name AS nomL', 'G.name AS nomG', 'L.id_area AS area')
+            ->where('L.id_area', '=', 1)
+            ->get();
         $primaria = Ce_level_groups::join('ce_level as L', 'ce_level_groups.id_level', '=', 'L.id_level')
             ->join('ce_group as G', 'ce_level_groups.id_group', '=', 'G.id_group')
-            ->select('ce_level_groups.id_lg AS idlg','L.name AS nomL','G.name AS nomG','L.id_area AS area')
-            ->where('L.id_area', '=', 2)->get();
+            ->select('ce_level_groups.id_lg AS idlg', 'L.name AS nomL', 'G.name AS nomG', 'L.id_area AS area')
+            ->where('L.id_area', '=', 2)
+            ->get();
         $secundaria = Ce_level_groups::join('ce_level as L', 'ce_level_groups.id_level', '=', 'L.id_level')
             ->join('ce_group as G', 'ce_level_groups.id_group', '=', 'G.id_group')
-            ->select('ce_level_groups.id_lg AS idlg','L.name AS nomL','G.name AS nomG','L.id_area AS area')
-            ->where('L.id_area', '=', 3)->get();
+            ->select('ce_level_groups.id_lg AS idlg', 'L.name AS nomL', 'G.name AS nomG', 'L.id_area AS area')
+            ->where('L.id_area', '=', 3)
+            ->get();
         return view('system/admin/assignment/student-group/index', compact(['preescolar', 'primaria', 'secundaria']));
     }
 
@@ -53,14 +56,16 @@ class StudentGroupController extends Controller
     public function store(Request $request)
     {
         if ($request) {
-            $dato2=$request->input('check_lista');
-            foreach($dato2 as $dato){
+            $dato2 = $request->input('check_lista');
+            foreach ($dato2 as $dato) {
                 $lg = new Ce_user_enrolment();
-                $lg -> id_lg= $request->input('id_lg');
-                $lg -> id_user= $dato;
+                $lg->id_lg = $request->input('id_lg');
+                $lg->id_user = $dato;
                 $lg->save();
-            };
-            return redirect()->route('admin.assignment.student.group.index')->with('Registrar', 'ok');
+            }
+            return redirect()
+                ->route('admin.assignment.student.group.index')
+                ->with('Registrar', 'ok');
         }
     }
 
@@ -83,22 +88,27 @@ class StudentGroupController extends Controller
      */
     public function edit($lg)
     {
-        $infolg=Ce_level_groups::join('ce_level as L', 'ce_level_groups.id_level', '=', 'L.id_level')
-        ->join('ce_group as G', 'ce_level_groups.id_group', '=', 'G.id_group')
-        ->select('ce_level_groups.id_lg AS idlg','L.name AS nomL','G.name AS nomG','L.id_area AS area','ce_level_groups.id_level AS idlevel','ce_level_groups.id_group AS idgroup')
-        ->where('ce_level_groups.id_lg', '=', $lg)->get();
+        $infolg = Ce_level_groups::join('ce_level as L', 'ce_level_groups.id_level', '=', 'L.id_level')
+            ->join('ce_group as G', 'ce_level_groups.id_group', '=', 'G.id_group')
+            ->select('ce_level_groups.id_lg AS idlg', 'L.name AS nomL', 'G.name AS nomG', 'L.id_area AS area', 'ce_level_groups.id_level AS idlevel', 'ce_level_groups.id_group AS idgroup')
+            ->where('ce_level_groups.id_lg', '=', $lg)
+            ->get();
         $area = Ce_level_groups::join('ce_level as L', 'ce_level_groups.id_level', '=', 'L.id_level')
-        ->join('ce_group as G', 'ce_level_groups.id_group', '=', 'G.id_group')
-        ->where('ce_level_groups.id_lg', '=', $lg)->get('L.id_area');
-        $area=$area[0]["id_area"];
+            ->join('ce_group as G', 'ce_level_groups.id_group', '=', 'G.id_group')
+            ->where('ce_level_groups.id_lg', '=', $lg)
+            ->get('L.id_area');
+        $area = $area[0]['id_area'];
         //$students = Ce_student::join('ce_user_enrolment as UE', 'ce_student.id_student', '<>', 'UE.id_user')->where('id_area', $area)->where('status','Activo')->get();
-        $students = Ce_student::where('id_area', $area)->where('status','Activo')->get();
+        $students = Ce_student::where('id_area', $area)
+            ->where('status', 'Activo')
+            ->get();
 
-        $alumasign=Ce_user_enrolment::join('ce_student as S', 'ce_user_enrolment.id_user', '=', 'S.id_student')
-        ->join('ce_level_groups as LG', 'ce_user_enrolment.id_lg', '=', 'LG.id_lg')
-        ->select('S.name AS nombre')
-        ->where('LG.id_lg', $lg)->get();
-        return view('system/admin/assignment/student-group/create',compact('students','infolg','alumasign'));
+        $alumasign = Ce_user_enrolment::join('ce_student as S', 'ce_user_enrolment.id_user', '=', 'S.id_student')
+            ->join('ce_level_groups as LG', 'ce_user_enrolment.id_lg', '=', 'LG.id_lg')
+            ->select('S.name AS nombre')
+            ->where('LG.id_lg', $lg)
+            ->get();
+        return view('system/admin/assignment/student-group/create', compact('students', 'infolg', 'alumasign'));
     }
 
     /**
@@ -110,7 +120,6 @@ class StudentGroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-
     }
 
     /**
@@ -123,5 +132,4 @@ class StudentGroupController extends Controller
     {
         //
     }
-
 }

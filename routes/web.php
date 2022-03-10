@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Assignment\LevelCoursesController;
 use App\Http\Controllers\Admin\Assignment\StudentGroupController;
 use App\Http\Controllers\Admin\Assignment\TutorGroupController;
 use App\Http\Controllers\Admin\Course\CourseController;
+use App\Http\Controllers\Admin\Academia\AcademiaController;
 use App\Http\Controllers\Admin\Cycle\CycleController;
 use App\Http\Controllers\Admin\Director\DirectorController;
 use App\Http\Controllers\Admin\Evaluations\EvaluationsController;
@@ -218,4 +219,13 @@ Route::resource('sistema/control/asignacion/tutor/grupo', TutorGroupController::
 //Crud Impresión de las boletas
 Route::resource('sistema/control/grupo/evaluaciones/boleta', BoletaController::class)
     ->names('admin.teacher.tutor.boleta')
+    ->middleware('auth');
+
+//Curd para las Academias
+Route::resource('sistema/control/academia', AcademiaController::class)
+    ->names('admin.academia')
+    ->middleware('auth');
+
+Route::post('sistema/control/academia/asignacion', [AcademiaController::class, 'guardarAsignacion'])
+    ->name('admin.academia.materia')
     ->middleware('auth');

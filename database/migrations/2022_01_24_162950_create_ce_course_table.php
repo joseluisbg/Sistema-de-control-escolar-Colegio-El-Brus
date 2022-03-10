@@ -22,10 +22,26 @@ class CreateCeCourseTable extends Migration
             $table->text('nick_sep')->nullable();
             $table->integer('rep_sep')->length(11);
             $table->text('cycle');
-            $table->integer('id_area')->length(11)->nullable()->unsigned();
+            $table
+                ->integer('id_area')
+                ->length(11)
+                ->nullable()
+                ->unsigned();
+            $table
+                ->integer('id_section')
+                ->length(11)
+                ->nullable()
+                ->unsigned();
             $table->text('status');
             $table->integer('user_modification')->length(11);
-            $table->foreign('id_area')->references('id_area')->on('ce_area');
+            $table
+                ->foreign('id_area')
+                ->references('id_area')
+                ->on('ce_area');
+            $table
+                ->foreign('id_section')
+                ->references('id_section')
+                ->on('ce_section');
             $table->timestamps();
         });
     }
