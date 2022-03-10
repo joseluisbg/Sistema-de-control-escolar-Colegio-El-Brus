@@ -332,8 +332,24 @@ $periodo3 = Ce_average::select('*')
         <tr class="row21">
             <td class="column0 style12 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">Promedio Académico Inglés</span></td>
             <td class="column1 style73 null style75" colspan="2"></td>
-            <td class="column3 style100 n">9.72</td>
-            <td class="column4 style73 null style75" colspan="2"></td>
+            <?php
+            $promIngles = Ce_average::join('ce_course AS C', 'ce_average.id_course', '=', 'C.id_course')
+                ->join('ce_academy_course AS AC', 'C.id_course', '=', 'AC.id_course')
+                ->select('ce_average.value')
+                ->where('ce_average.id_student', '=', $infoA[0]->idEst)
+                ->where('ce_average.id_period', '=', 1)
+                ->where('AC.id_academy', '=', 1)
+                ->get();
+            $numeros =$promIngles;
+            $suma = 0;
+            foreach ($numeros as $numero) {
+                $suma =$suma+$numero->value;
+            }
+            $cantidadDeElementos = count($numeros);
+            $promedioI = $suma / $cantidadDeElementos;
+            ?>
+            <td class="column3 style100 n">{{$promedioI}}</td>
+            <!-- <td class="column4 style73 null style75" colspan="2"></td>
             <td class="column6 style73 null style75" colspan="3"></td>
             <td class="column9 style73 null style75" colspan="3"></td>
             <td class="column12 style73 null style75" colspan="2"></td>
@@ -342,11 +358,29 @@ $periodo3 = Ce_average::select('*')
             <td class="column16 style94 n style95" colspan="2">10</td>
             <td class="column18 style73 null style75" colspan="3"></td>
             <td class="column21 style73 null style75" colspan="3"></td>
-            <td class="column24 style97 n style98" colspan="2">10.0</td>
+            <td class="column24 style97 n style98" colspan="2">10.0</td> -->
         </tr>
         <tr class="row22">
             <td class="column0 style12 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">Promedio Académico Español</span></td>
             <td class="column1 style73 null style75" colspan="2"></td>
+            <?php
+            $promEspa = Ce_average::join('ce_course AS C', 'ce_average.id_course', '=', 'C.id_course')
+                ->join('ce_academy_course AS AC', 'C.id_course', '=', 'AC.id_course')
+                ->select('ce_average.value')
+                ->where('ce_average.id_student', '=', $infoA[0]->idEst)
+                ->where('ce_average.id_period', '=', 1)
+                ->where('AC.id_academy', '=', 2)
+                ->get();
+            $numerosE =$promEspa;
+            $sumaE = 0;
+            foreach ($numerosE as $numeroE) {
+                $sumaE =$sumaE+$numeroE->value;
+            }
+            $cantidadDeElementosE = count($numerosE);
+            $promedioE = $sumaE / $cantidadDeElementosE;
+            ?>
+            <td class="column3 style100 n">{{$promedioE}}</td>
+            <!-- <td class="column1 style73 null style75" colspan="2"></td>
             <td class="column3 style100 n">9.92</td>
             <td class="column4 style73 null style75" colspan="2"></td>
             <td class="column6 style73 null style75" colspan="3"></td>
@@ -354,11 +388,29 @@ $periodo3 = Ce_average::select('*')
             <td class="column12 style73 null style75" colspan="2"></td>
             <td class="column14 style101 n">9.92</td>
             <td class="column15 style91 null"></td>
-            <td class="column16 style73 null style75" colspan="10"></td>
+            <td class="column16 style73 null style75" colspan="10"></td> -->
         </tr>
         <tr class="row23">
             <td class="column0 style12 s"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">Promedio Académico</span></td>
             <td class="column1 style73 null style75" colspan="2"></td>
+            <?php
+            $promAc = Ce_average::join('ce_course AS C', 'ce_average.id_course', '=', 'C.id_course')
+                ->join('ce_academy_course AS AC', 'C.id_course', '=', 'AC.id_course')
+                ->select('ce_average.value')
+                ->where('ce_average.id_student', '=', $infoA[0]->idEst)
+                ->where('ce_average.id_period', '=', 1)
+                ->where('AC.id_academy', '=', 3)
+                ->get();
+            $numerosA =$promAc;
+            $sumaA = 0;
+            foreach ($numerosA as $numeroA) {
+                $sumaA =$sumaA+$numeroA->value;
+            }
+            $cantidadDeElementosA = count($numerosA);
+            $promedioA = $sumaA / $cantidadDeElementosA;
+            ?>
+            <td class="column3 style100 n">{{$promedioE}}</td>
+            <!-- <td class="column1 style73 null style75" colspan="2"></td>
             <td class="column3 style100 n">9.82</td>
             <td class="column4 style73 null style75" colspan="2"></td>
             <td class="column6 style73 null style75" colspan="3"></td>
@@ -367,7 +419,7 @@ $periodo3 = Ce_average::select('*')
             <td class="column14 style101 n">9.82</td>
             <td class="column15 style91 null"></td>
             <td class="column16 style57 s style59" colspan="8"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">PROMEDIO FINAL DE GRADO SEP</span></td>
-            <td class="column24 style97 n style98" colspan="2">10.0</td>
+            <td class="column24 style97 n style98" colspan="2">10.0</td> -->
         </tr>
     </tbody>
 </table>

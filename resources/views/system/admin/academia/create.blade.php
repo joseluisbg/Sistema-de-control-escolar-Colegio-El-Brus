@@ -18,7 +18,7 @@
                             <table id="alumnos1" class="table table-striped">
                                 <thead>
                                     <tr class="text-uppercase">
-                                        <th>Listado de alumnos por asignar</th>
+                                        <th>Listado de materias por asignar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -30,7 +30,7 @@
                                                 <td>
                                                     <div class="form-check">
                                                         <input type="checkbox" name="id_course[]"
-                                                            value="{{ $student->idCourse }}">
+                                                            value="{{ $student->id_course }}">
                                                         <label class="form-check-label" for="exampleRadios1">
                                                             {{ $student->name }}
                                                         </label>
