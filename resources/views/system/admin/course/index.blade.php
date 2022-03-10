@@ -92,7 +92,7 @@
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <label>Academia:</label>
+                                    <label>Sección:</label>
                                     <select class="form-control" name="id_section" required>
                                         <option selected disabled value="">Seleccionar</option>
                                         @foreach ($sections as $section)
