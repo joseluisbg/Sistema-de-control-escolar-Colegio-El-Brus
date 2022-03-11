@@ -20,7 +20,8 @@
                             <thead>
                                 <tr class="text-uppercase">
                                     <th>Nombre de alumno</th>
-                                    <th>Obtener Boleta</th>
+                                    <th>Obtener Boleta Excel</th>
+                                    <th>Obtener Boleta PDF</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,6 +32,12 @@
                                             <a href="{{ route('boletas.export.alumno', $student->idEstudent) }}"
                                                 class="btn btn-success">
                                                 <span class="fas fa-file-excel"></span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('boletas.export.alumno.pdf', $student->idEstudent) }}"
+                                                class="btn btn-danger">
+                                                <span class="fas fa-file-pdf"></span>
                                             </a>
                                         </td>
                                     </tr>

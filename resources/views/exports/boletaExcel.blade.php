@@ -1,16 +1,17 @@
 <style>
     table {
+		
+    margin: 0 auto;
+		
+    border-collapse: collapse;
+}
 
-        margin: 0 auto;
-
-        border-collapse: collapse;
-    }
-
-    table,
-    th,
-    td {
-        border: 1px solid black;
-    }
+table,
+th,
+td {
+    border: 1px solid black;
+    text-align: center;
+}
 </style>
 <?php
 
@@ -36,7 +37,9 @@ $periodo3 = Ce_average::select('*')
     <tbody>
         <tr class="row0">
             <td colspan="2" rowspan="4">
-
+            @if(isset($imagen))
+            <img src="img/logo-elbrus.png" width="70" alt="">
+            @endif
             </td>
             <td class="column0 style1 s style9" colspan="7" rowspan="4">
                 <span style="color:#000000; font-family:'Times New Roman'; font-size:24.5pt">COLEGIO ELBRUS<br />

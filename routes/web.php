@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\Admin\Assignment\CourseTeacherController;
 use App\Http\Controllers\Admin\Assignment\LevelCoursesController;
 use App\Http\Controllers\Admin\Assignment\StudentGroupController;
@@ -209,6 +210,10 @@ Route::get('sistema/exportacion/boleta', [EvaluationsController::class, 'exporta
 
 Route::get('sistema/exportacion/boleta/{id_student}', [BoletaController::class, 'exportarBoleta'])
     ->name('boletas.export.alumno')
+    ->middleware('auth');
+
+Route::get('sistema/exportacion/boletaPDF/{id_student}', [BoletaController::class, 'exportarBoletaPDF'])
+    ->name('boletas.export.alumno.pdf')
     ->middleware('auth');
 
 //Crud Asignación de tutor a grupo
