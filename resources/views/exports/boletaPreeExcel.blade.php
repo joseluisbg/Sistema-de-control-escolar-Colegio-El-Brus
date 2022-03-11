@@ -1,3 +1,17 @@
+<style>
+    table {
+		
+    margin: 0 auto;
+		
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+</style>
 <?php
 
 use App\Models\Ce_grades;
@@ -17,7 +31,7 @@ $periodo3 = Ce_average::select('*')
     ->where('ce_average.id_period', '=', 3)
     ->get();
 ?>
-<table border="1">
+<table border="1" class="table">
 
     <tbody>
         <tr class="row0">
