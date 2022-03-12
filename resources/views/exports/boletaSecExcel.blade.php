@@ -226,6 +226,7 @@ $periodo3 = Ce_average::select('*')
                 ->get();
             $crub = Ce_course::join('ce_rubro_course AS RC', 'ce_course.id_course', '=', 'RC.id_course')
                 ->select('*')
+                ->where('ce_course.id_area', '=',3)
                 ->where('ce_course.name', '=', $in2->Curso)
                 ->get();
             $crub = count($crub);
@@ -333,6 +334,7 @@ $periodo3 = Ce_average::select('*')
                         ->get();
                     ?>
                     @if (isset($promedio2[0]) and $promedio2[0]->rep_sep == 1)
+                    
                     <td class="column3 style88 n" colspan="3">{{ $valor = round($promedio2[0]->value) }}</td>
                     
                     @endif
@@ -373,6 +375,7 @@ $periodo3 = Ce_average::select('*')
                     ?>
                         <!-- <td class="column3 style88 n">{{ $promedio1[0]->value }}</td> -->
                         <!-- <td class="column4 style86 null style87" colspan="3"></td> -->
+                        <td class="column3 style88 n" colspan="3"></td>
                         <td class="column3 style88 n" colspan="2">{{ round($promedio,2) }}</td>
                     <?php } elseif (isset($promedio1[0]) and $promedio1[0]->rep_sep == 1) {
                         $promedio = round($promedio1[0]->value);
@@ -380,6 +383,8 @@ $periodo3 = Ce_average::select('*')
                     ?>
                         <!-- <td class="column3 style88 n">{{ $promedio1[0]->value }}</td> -->
                         <!-- <td class="column4 style86 null style87" colspan="6"></td> -->
+                        <td class="column3 style88 n" colspan="3"></td>
+                        <td class="column3 style88 n" colspan="3"></td>
                         <td class="column3 style88 n" colspan="2">{{ round($promedio,2) }}</td>
                     <?php }
 
@@ -503,7 +508,6 @@ $periodo3 = Ce_average::select('*')
             $promedioEP1 = $sumaEP1 / $cantidadDeElementosEP1;
             ?>
             <td class="column3 style100 n">{{ $promedioEP1 }}</td>
-            <td class="column1 style73 null style75" colspan="2"></td>
 
             <?php
             $promEP2 = Ce_average::join('ce_course AS C', 'ce_average.id_course', '=', 'C.id_course')
@@ -522,8 +526,8 @@ $periodo3 = Ce_average::select('*')
                 $cantidadDeElementosEP2 = count($numerosEP2);
                 $promedioEP2 = $sumaEP2 / $cantidadDeElementosEP2;
             ?>
+            <td class="column1 style73 null style75" colspan="2"></td>
                 <td class="column3 style100 n">{{ $promedioEP2 }}</td>
-                <td class="column3 style100 n"></td>
             <?php
             } else {
 
@@ -548,13 +552,14 @@ $periodo3 = Ce_average::select('*')
                 $cantidadDeElementosEP3 = count($numerosEP3);
                 $promedioEP3 = $sumaEP3 / $cantidadDeElementosEP3;
             ?>
-                <td class="column3 style88 n"></td>
+                <td class="column1 style73 null style75" colspan="2"></td>
                 <td class="column3 style100 n">{{ $promedioEP3 }}</td>
             <?php
             } else {
 
             ?>
-                <td class="column3 style100 n"></td>
+               
+                <td class="column1 style73 null style75" colspan="2"></td>
 
             <?php
             }
@@ -571,7 +576,7 @@ $periodo3 = Ce_average::select('*')
             <?php } elseif (!empty($promedioEP1)) {
                 $promedioPespañol = $promedioEP1;
             ?>
-                <td class="column3 style88 n" colspan="2"></td>
+                
                 <td class="column3 style88 n">{{ round($promedioPespañol,2) }}</td>
             <?php
             }
