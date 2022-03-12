@@ -1,17 +1,19 @@
 <style>
     table {
-
         margin: 0 auto;
-
-        border-collapse: collapse;
+        border: 1px solid #000;
+        border-spacing: 0;
     }
 
-    table,
-    th,
-    tr,
     td {
         border: 1px solid black;
         text-align: center;
+        border-top:1px solid #000;
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+        border-left:1px solid #000;
+        border-spacing: 0;
+        border-collapse: collapse;
     }
 </style>
 <?php
@@ -65,7 +67,7 @@ $periodo3 = Ce_average::select('*')
 
             <td class="column11 style30 s style32" colspan="8"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{ $infoA[0]->Nombre }}</span>
             </td>
-            <td class="column19 style34 n style36" colspan="3">{{ $infoA[0]->Matricula }}</td>
+            <td class="column19 style34 n style36" colspan="3"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{ $infoA[0]->Matricula }}</span></td>
             <td class="column22 style37 s style39" colspan="3"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{ $infoA[0]->Grupo }}</span>
             </td>
             <td class="column25 style40 s"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{ $infoA[0]->Area }}</span></td>
@@ -100,7 +102,7 @@ $periodo3 = Ce_average::select('*')
             <?php
             }
             ?>
-            <td class="column20 style47 n style49" colspan="3">{{ date('d-m-y') }}</td>
+            <td class="column20 style47 n style49" colspan="3"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{ date('d-m-y') }}</span></td>
             <td class="column23 style44 s style46" colspan="3"><span style="color:#000000; font-family:'Arial MT'; font-size:8pt">{{ $infoA[0]->Ciclo }}</span>
             </td>
         </tr>
@@ -116,7 +118,7 @@ $periodo3 = Ce_average::select('*')
             <td class="column14 style53 s style54" rowspan="2"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:7.5pt">Promedio
                     FINAL</span>
             </td>
-            <td class="column15 style55 null style56" rowspan="20"></td>
+            <td class="column15 style55 null style56" rowspan="20" style="border:0 !important;"></td>
             <td class="column16 style57 s style59" colspan="8"><span style="font-weight:bold; color:#000000; font-family:'Arial'; font-size:8pt">PERIODO DE
                     EVALUACIÓN
                     SEP</span></td>
@@ -765,7 +767,7 @@ $periodo3 = Ce_average::select('*')
             <?php } ?>
         </tr>
         <tr class="row27" style=" border: 1px solid black;">
-            <td class="column0 style77 null style78" colspan="12"></td>
+            <td class="column0 style77 null style78" colspan="12" style="border:0 !important;"></td>
             <td class="column16 style108 s style110" colspan="10" rowspan="4"><span style="color:#000000; font-family:'Arial MT'; font-size:6.5pt;">NOMBRE, FECHA Y FIRMA DEL TUTOR:</span></td>
         </tr>
     </tbody>

@@ -164,7 +164,7 @@ class BoletaController extends Controller
                 break;
         }
         $imagen="Si";
-        $pdf = PDF::loadView($boleta, ['infoA'=>$infoA,'infoC'=> $infoC,'imagen'=>$imagen])->setPaper('a1');
+        $pdf = PDF::loadView($boleta, ['infoA'=>$infoA,'infoC'=> $infoC,'imagen'=>$imagen])->setPaper('a3', 'landscape');
         return $pdf->download('Boleta.pdf');
     }
 }
